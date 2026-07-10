@@ -116,7 +116,10 @@ def fig_specificity_boxplot(g_rec, b_rec, out: Path) -> None:
                label="causally inert (atom never fires)")
     fig.tight_layout()
     fig.subplots_adjust(bottom=0.22)
-    ax.legend(loc="upper center", bbox_to_anchor=(0.5, -0.13), frameon=False, fontsize=10.5, ncol=1)
+    ax.legend(
+        loc="upper center", bbox_to_anchor=(0.5, -0.13),
+        frameon=False, fontsize=10.5, ncol=1,
+    )
     fig.savefig(out, bbox_inches="tight")
     plt.close(fig)
 
