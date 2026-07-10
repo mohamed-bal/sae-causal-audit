@@ -42,12 +42,6 @@ os.environ.setdefault("PYTHONHASHSEED", "0")
 
 import torch
 
-# Pin inter-op parallelism IMMEDIATELY after import, before any work is
-# scheduled.  torch.set_num_threads (intra-op) is set later in main(), but
-# inter-op must be locked here — it cannot be changed once parallel work
-# has started.
-torch.set_num_interop_threads(1)
-
 from sae_causal_audit import AuditConfig, render_markdown, run_audit, save_json
 from sae_causal_audit.toy import (
     ToyConfig,
@@ -89,6 +83,7 @@ def main(argv: list[str] | None = None) -> int:
     # Determinism guards: single-threaded reductions avoid nondeterministic
     # float accumulation order across machines with different core counts.
     torch.set_num_threads(1)
+    torch.set_num_interop_threads(1)
 
     # Print backend diagnostics so CI logs reveal what BLAS is actually active.
     _print_torch_diagnostics()
