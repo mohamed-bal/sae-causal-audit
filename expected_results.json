@@ -1,0 +1,19 @@
+{
+  "bad_k13": {
+    "of_well_represented": 22,
+    "recovered": {"value": 18, "atol": 1, "rtol": 0},
+    "recovered_inert": {"value": 3, "atol": 1, "rtol": 0}
+  },
+  "good_k4": {
+    "inert_rate": 0.0909,
+    "of_well_represented": 22,
+    "recovered": 22,
+    "recovered_inert": 2
+  },
+  "toy_model": {
+    "n_features": 32,
+    "n_hidden": 8,
+    "sparsity": 0.95,
+    "well_represented": 22
+  }
+}

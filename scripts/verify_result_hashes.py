@@ -64,7 +64,14 @@ def main(argv: list[str] | None = None) -> int:
         )
         return 1
 
-    expected = json.loads(args.expected_file.read_text(encoding="utf-8"))
+    try:
+        expected = json.loads(args.expected_file.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        print(
+            f"error: {args.expected_file} is not valid JSON: {exc}",
+            file=sys.stderr,
+        )
+        return 2
     failures: list[str] = []
     for name, want in sorted(expected.items()):
         got = current.get(name)

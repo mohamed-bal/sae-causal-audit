@@ -102,10 +102,26 @@ class SparseAutoencoder(Protocol):
 ```bash
 make reproduce                          # regenerates results/*.json from scratch, deterministically (~3 min, CPU)
 python scripts/generate_figures.py      # regenerates every figure in this README from results/*.json
-make verify                             # reproduce + fail if any result hash moved (the CI regression gate)
+make verify                             # reproduce + tolerance check against expected values (any OS)
+make verify-hashes                      # reproduce + byte-exact hash check (CI reference environment only)
 make test lint                          # 37 tests incl. hypothesis property tests; ruff clean
 docker build -t sae-audit . && docker run sae-audit   # fully pinned environment
 ```
+
+### Reproducibility guarantees
+
+| Guarantee | Scope | Verified by |
+|---|---|---|
+| **Byte-exact** (SHA-256 hash match) | Pinned CI environment: `ubuntu-24.04`, `torch==2.13.0+cpu`, Python 3.12 | `make verify-hashes` in CI |
+| **Semantic** (numeric values within `rtol=1e-4`) | Any platform | `make verify` locally |
+
+Cross-platform byte-exactness is impossible: the `torch` CPU wheel for each OS is compiled with a different compiler (GCC on Linux, MSVC on Windows, Clang on macOS) and linked against a different MKL build.
+These different binaries produce different float rounding at the bit level, even with identical seeds and single-threaded execution.
+The semantic check confirms that the scientific conclusions (recovery counts, inert rates, specificity CIs) are unchanged despite this irreducible platform variance.
+
+The deliberately-degraded `bad_k13` SAE sits at a TopK selection boundary: its cosine similarities cluster near the 0.90 recovery threshold, so different BLAS builds can flip ±1 feature across that line.
+Its discrete counts (`recovered`, `recovered_inert`) therefore carry an explicit `atol=1` tolerance in `expected_results.json`, while all continuous metrics and all `good_k4` results hold at `rtol=1e-4` across platforms.
+This is expected behavior of a pathological SAE designed to probe the audit's sensitivity — it is consistent with the boundary-sensitivity mechanism identified in the root-cause analysis, not a reproducibility failure.
 
 ## Design decisions worth knowing
 

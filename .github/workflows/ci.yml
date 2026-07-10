@@ -4,6 +4,12 @@ on:
   push:
     branches: [main]
   pull_request:
+  workflow_dispatch:
+    inputs:
+      regenerate_hashes:
+        description: "Set to 'true' to regenerate expected_hashes.json from this environment"
+        required: false
+        default: "false"
 
 permissions:
   contents: read
@@ -57,10 +63,52 @@ jobs:
           pip install torch==2.13.0 --index-url https://download.pytorch.org/whl/cpu
           pip install -e .
       - name: Reproduce + verify result hashes
-        run: make verify
+        run: make verify-hashes
       - name: Upload regenerated results
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: results
+          path: results/
+
+  regenerate-hashes:
+    # Manually triggered: regenerates expected_hashes.json from the CI
+    # environment.  Use when torch or the runner image is intentionally
+    # bumped — the new baseline is produced BY CI, never locally.
+    #
+    # Trigger: Actions → CI → Run workflow → set regenerate_hashes=true
+    if: github.event_name == 'workflow_dispatch' && github.event.inputs.regenerate_hashes == 'true'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      MKL_CBWR: COMPATIBLE
+      OMP_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+      OPENBLAS_NUM_THREADS: "1"
+      VECLIB_MAXIMUM_THREADS: "1"
+      NUMEXPR_NUM_THREADS: "1"
+      PYTHONHASHSEED: "0"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install (CPU torch, pinned)
+        run: |
+          pip install torch==2.13.0 --index-url https://download.pytorch.org/whl/cpu
+          pip install -e .
+      - name: Reproduce results
+        run: make reproduce
+      - name: Generate expected_hashes.json
+        run: python3 scripts/verify_result_hashes.py results/ expected_hashes.json --update
+      - name: Upload expected_hashes.json
+        uses: actions/upload-artifact@v4
+        with:
+          name: expected-hashes
+          path: expected_hashes.json
+      - name: Upload results
+        uses: actions/upload-artifact@v4
+        with:
+          name: regenerated-results
           path: results/
