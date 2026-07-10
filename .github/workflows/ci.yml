@@ -33,6 +33,15 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 25
     needs: quality
+    env:
+      # Forces MKL to use the same code path regardless of which CPU
+      # microarchitecture the shared runner happens to land on this time —
+      # without this, results can vary run-to-run even with a pinned torch
+      # version, because MKL auto-detects AVX2/AVX512 support and picks a
+      # different vectorized kernel accordingly.
+      MKL_CBWR: COMPATIBLE
+      OMP_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5

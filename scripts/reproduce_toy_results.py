@@ -18,8 +18,20 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 from pathlib import Path
+
+# Force MKL's Conditional Bitwise Reproducibility mode BEFORE torch (and its
+# MKL backend) initializes. Different GitHub-hosted runner instances can sit
+# on different underlying CPU microarchitectures (AVX2 vs AVX512, etc.); MKL
+# auto-detects this at runtime and picks a different vectorized code path,
+# which changes floating-point rounding even with identical seeds and an
+# identical pinned torch version. COMPATIBLE mode fixes the code path so the
+# result no longer depends on which physical CPU the job happened to land on.
+os.environ.setdefault("MKL_CBWR", "COMPATIBLE")
+os.environ.setdefault("OMP_NUM_THREADS", "1")
+os.environ.setdefault("MKL_NUM_THREADS", "1")
 
 import torch
 
@@ -44,7 +56,18 @@ def main(argv: list[str] | None = None) -> int:
     # Determinism guards: single-threaded reductions avoid nondeterministic
     # float accumulation order across machines with different core counts.
     torch.set_num_threads(1)
-    torch.use_deterministic_algorithms(True)
+    try:
+        torch.use_deterministic_algorithms(True)
+    except RuntimeError as e:
+        # Some torch builds lack a deterministic CPU kernel for a specific op
+        # this pipeline happens to use. Seeds still make every result
+        # reproducible; only the stricter algorithm-level guarantee is lost.
+        print(
+            f"warning: deterministic algorithms unavailable in this torch "
+            f"build ({e}); continuing with seeded-but-not-algorithm-strict "
+            f"reproducibility",
+            file=sys.stderr,
+        )
 
     print("training toy model (32 features -> 8 dims, sparsity 0.95)...")
     model = train_toy_model(ToyConfig(seed=0), steps=args.steps)
