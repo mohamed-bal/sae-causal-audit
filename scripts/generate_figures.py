@@ -114,9 +114,9 @@ def fig_specificity_boxplot(g_rec, b_rec, out: Path) -> None:
     )
     ax.scatter([], [], s=70, marker="X", color=INERT_C, edgecolor="black", lw=0.6,
                label="causally inert (atom never fires)")
-    ax.legend(loc="lower left", frameon=False, fontsize=9)
+    ax.legend(loc="lower right", frameon=False, fontsize=10)
     fig.tight_layout()
-    fig.savefig(out)
+    fig.savefig(out, bbox_inches="tight")
     plt.close(fig)
 
 
@@ -136,12 +136,19 @@ def fig_cosine_vs_specificity(g_rec, b_rec, out: Path) -> None:
     ax.set_title("A near-perfect geometric match does not guarantee a causal one")
     cb = fig.colorbar(sc, ax=ax, pad=0.02)
     cb.set_label("fired_frac (atom fires when feature is ON)")
-    f8 = next((r for r in g_rec if int(r["feature_idx"]) == 8), None)
-    if f8 is not None:
+    candidates = [r for r in g_rec + b_rec if r["cosine"] >= 0.99]
+    if candidates:
+        worst_f = min(candidates, key=lambda r: r["fired_frac"])
+        spec_val = _cap([worst_f["ablation_specificity"]])[0]
+        ax.set_xlim(left=0.84)
+        bbox_props = dict(boxstyle="round,pad=0.3", fc="white", ec="gray", lw=0.5, alpha=0.9)
+        text = (f"cos = {worst_f['cosine']:.4f},\n"
+                f"{'never fires' if worst_f['fired_frac'] == 0 else f'fired_frac = {worst_f['fired_frac']:.3f}'},\n"
+                f"ablation spec = {worst_f['ablation_specificity']:.1f}")
         ax.annotate(
-            f"feature 8: cos = {f8['cosine']:.4f},\nnever fires, ablation spec = 0",
-            xy=(f8["cosine"], 0), xytext=(0.902, 30),
-            arrowprops=dict(arrowstyle="->", color="black", lw=1), fontsize=9,
+            text, xy=(worst_f["cosine"], spec_val), xytext=(0.85, max(10, spec_val)),
+            bbox=bbox_props,
+            arrowprops=dict(arrowstyle="->", color="black", lw=1, shrinkB=4), fontsize=9,
         )
     ax.legend(loc="upper left", frameon=False, fontsize=9)
     fig.tight_layout()

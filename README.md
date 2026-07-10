@@ -7,19 +7,21 @@
 
 **Causal validation for sparse-autoencoder features: separate genuinely load-bearing features from geometrically plausible, causally inert ones.**
 
-A cosine-similarity match between an SAE decoder atom and a concept direction is a *correlational* claim. In controlled experiments with full ground truth ([write-up](https://github.com/mohamed-bal/superposition-to-monosemanticity)), up to **77% of features that passed a standard cosine recovery bar (≥ 0.90) turned out to be causally inert** — the matched atom never fired once when its feature was actually present. One inert feature matched at cosine 0.92; two others at cosine > 0.9999. Decoder geometry and encoder behavior are different empirical claims, and only an intervention can tell them apart.
+A cosine-similarity match between an SAE decoder atom and a concept direction is a _correlational_ claim. In controlled experiments with full ground truth ([write-up](https://github.com/mohamed-bal/superposition-to-monosemanticity)), a meaningful share of features that passed a standard cosine recovery bar (≥ 0.90) turned out to be **causally inert** — the matched atom never fired once when its feature was actually present, including matches at cosine > 0.999. Decoder geometry and encoder behavior are different empirical claims, and only an intervention can tell them apart.
 
 This package is that intervention, packaged: a model-agnostic causal audit you can run on any SAE — toy or production.
+
+📄 **Full write-up:** [A Cosine Similarity of 1.000 and the Feature Still Never Fires](https://dev.to/mohamed_bal/a-cosine-similarity-of-1000-and-the-feature-still-never-fires-turning-a-causal-inertness-finding-5dhp) — the reproducibility debugging story, the antipodal-pair mechanism, and the full results walkthrough behind this package.
 
 ![Audit pipeline diagram: a SparseAutoencoder and a FeatureProbe feed two parallel paths — matching against W_dec (decoder geometry, correlational) and a causal battery of fired_frac, ablation, and steering (encoder behavior, causal) — which combine into an AuditReport serialized as hash-verified JSON and Markdown](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/h9flfp6a17cwz6plaizr.png)
 
 Three measurements per matched feature, in increasing order of causal strength:
 
-1. **`fired_frac`** — does the encoder *ever* activate this atom when the feature is present? (The cheap screen that already explains most inert cases.)
-2. **Ablation specificity** — zero the atom on feature-ON inputs: how hard does the *targeted* readout drop relative to collateral movement everywhere else?
-3. **Sign-correct steering** — force the atom on (with the *signed* match, never an assumed `+`) on feature-OFF inputs: does the targeted readout rise?
+1. **`fired_frac`** — does the encoder _ever_ activate this atom when the feature is present? (The cheap screen that already explains most inert cases.)
+2. **Ablation specificity** — zero the atom on feature-ON inputs: how hard does the _targeted_ readout drop relative to collateral movement everywhere else?
+3. **Sign-correct steering** — force the atom on (with the _signed_ match, never an assumed `+`) on feature-OFF inputs: does the targeted readout rise?
 
-Every summary number ships with a seeded percentile-bootstrap confidence interval, and every report serializes to deterministic JSON — **two runs producing identical science produce byte-identical files**, so CI can hash results and fail on scientific regressions, not just code regressions.
+Every summary number ships with a seeded percentile-bootstrap confidence interval, and every report serializes to deterministic JSON — **two runs producing identical science produce byte-identical files** within a pinned environment, so CI can hash results and fail on scientific regressions, not just code regressions.
 
 ## Install
 
@@ -55,17 +57,17 @@ print(render_markdown(report))
 
 Running the quick start above on two TopK SAEs from opposite ends of a Pareto front (`k=4`, well-fit; `k=13`, deliberately under-sparse) produces this census over the 22 well-represented toy features, cos ≥ 0.90:
 
-![Stacked bar chart: recovered features split into firing vs. causally inert, for the good (1/22 inert, 5%) and bad (6/18 inert, 33%) SAEs](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/8fd42d07vdsnvoi6a27y.png)
+![Stacked bar chart: recovered features split into firing vs. causally inert, for the good (2/22 inert, 9%) and bad (4/17 inert, 24%) SAEs](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/cw5r8xbss8uc7crjqaqp.png)
 
-A cosine match can be maximally confident and still causally wrong — the bad SAE's inert features include one matched at cosine **1.000**:
+A cosine match can be maximally confident and still causally wrong — several of the inert features across both SAEs are matched at cosine ≥ 0.999:
 
-![Scatter of cosine similarity vs. ablation specificity on a symlog axis, points colored by fired_frac: high-cosine points span the full range from specificity in the hundreds down to exactly zero, with feature 8 (cos 0.9997, never fires) annotated](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/65yt0qe733b728fb4kxm.png)
+![Boxplot with individual points on a symlog scale: ablation specificity for both SAEs, inert pairs marked as amber X's sitting at exactly zero, with the specificity=1 collateral-damage line marked](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/afhbe1x03xfuxabmdrjf.png)
 
-Every summary statistic ships as a bootstrap distribution, not a point estimate — note the bad SAE's median sitting far lower and reaching down toward an inert-dominated tail:
+Every summary statistic ships as a bootstrap distribution, not a point estimate — note the bad SAE's median sitting lower with a much wider interval:
 
-![Boxplot with individual points on a symlog scale: ablation specificity for both SAEs, inert pairs marked as amber X's sitting at exactly zero, with the specificity=1 collateral-damage line marked](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/cfokljzjjdzmhhwsd7l8.png)
+![Scatter of cosine similarity vs. ablation specificity on a symlog axis, points colored by fired_frac: high-cosine points span the full range from specificity in the hundreds down to exactly zero, with the antipodal inert matches at cosine ≈ 1.000 annotated](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/gz8bcni9vawdvz30sxh2.png)
 
-![Overlaid histograms of 10,000 bootstrap-resampled medians for each SAE: the good SAE's distribution sits tightly around 150, the bad SAE's is wide and multimodal with mass reaching down toward zero](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/o7bbotd72ocxglg8w8ss.png)
+![Overlaid histograms of 10,000 bootstrap-resampled medians for each SAE: the good SAE's distribution sits tightly around 130, the bad SAE's is wide with mass spread from 46 up past 110](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/1dq56oeglxg1yqzzf8fb.png)
 
 All four figures — and every number behind them — regenerate from scratch with `make reproduce && python scripts/generate_figures.py` (see [Reproduce every number](#reproduce-every-number)).
 
@@ -110,18 +112,17 @@ docker build -t sae-audit . && docker run sae-audit   # fully pinned environment
 
 ### Reproducibility guarantees
 
-| Guarantee | Scope | Verified by |
-|---|---|---|
-| **Byte-exact** (SHA-256 hash match) | best-effort / advisory in CI (runner hardware varies) | `make verify-hashes` in CI |
-| **Semantic** (numeric values within `rtol=1e-4`) | Any platform (enforced gate) | `make verify` in CI / locally |
+| Guarantee                                        | Scope                                                 | Verified by                   |
+| ------------------------------------------------ | ----------------------------------------------------- | ----------------------------- |
+| **Byte-exact** (SHA-256 hash match)              | best-effort / advisory in CI (runner hardware varies) | `make verify-hashes` in CI    |
+| **Semantic** (numeric values within `rtol=1e-4`) | Any platform (enforced gate)                          | `make verify` in CI / locally |
 
 Cross-platform byte-exactness is impossible: the `torch` CPU wheel for each OS is compiled with a different compiler (GCC on Linux, MSVC on Windows, Clang on macOS) and linked against a different MKL build.
-These different binaries produce different float rounding at the bit level, even with identical seeds and single-threaded execution.
-The semantic check confirms that the scientific conclusions (recovery counts, inert rates, specificity CIs) are unchanged despite this irreducible platform variance.
+These different binaries produce different float rounding at the bit level, even with identical seeds and single-threaded execution. Even _within_ GitHub-hosted Linux runners, exposed CPU capability (AVX2 vs AVX512) can vary run to run, changing PyTorch's compute path regardless of thread-count pinning.
+The semantic check confirms that the scientific conclusions (recovery counts, inert rates, specificity CIs) are unchanged despite this irreducible platform and runner variance — which is why it, not the hash check, is the enforced CI gate.
 
-The deliberately-degraded `bad_k13` SAE sits at a TopK selection boundary: its cosine similarities cluster near the 0.90 recovery threshold, so different BLAS builds can flip ±1 feature across that line.
-Its discrete counts (`recovered`, `recovered_inert`) therefore carry an explicit `atol=1` tolerance in `expected_results.json`, while all continuous metrics and all `good_k4` results hold at `rtol=1e-4` across platforms.
-This is expected behavior of a pathological SAE designed to probe the audit's sensitivity — it is consistent with the boundary-sensitivity mechanism identified in the root-cause analysis, not a reproducibility failure.
+The deliberately-degraded `bad_k13` SAE sits at a TopK selection boundary: several of its cosine similarities cluster near the 0.90 recovery threshold, so different BLAS builds or runner hardware can flip individual features across that line, shifting both the exact recovered/inert counts and which specific features they refer to run to run.
+This is expected behavior of a pathological SAE designed to probe the audit's sensitivity — it is consistent with the boundary-sensitivity mechanism identified in the root-cause analysis, not a reproducibility failure. `expected_results.json` tolerances are set accordingly.
 
 ## Design decisions worth knowing
 
