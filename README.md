@@ -11,7 +11,7 @@ A cosine-similarity match between an SAE decoder atom and a concept direction is
 
 This package is that intervention, packaged: a model-agnostic causal audit you can run on any SAE — toy or production.
 
-![Audit pipeline: a SparseAutoencoder and a FeatureProbe feed matching (decoder geometry, correlational) and a causal battery of fired_frac, ablation, and steering (encoder behavior, causal), which combine into an AuditReport serialized as hash-verified JSON and Markdown](figures/fig0_pipeline.png)
+![Audit pipeline diagram: a SparseAutoencoder and a FeatureProbe feed two parallel paths — matching against W_dec (decoder geometry, correlational) and a causal battery of fired_frac, ablation, and steering (encoder behavior, causal) — which combine into an AuditReport serialized as hash-verified JSON and Markdown](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/h9flfp6a17cwz6plaizr.png)
 
 Three measurements per matched feature, in increasing order of causal strength:
 
@@ -55,17 +55,17 @@ print(render_markdown(report))
 
 Running the quick start above on two TopK SAEs from opposite ends of a Pareto front (`k=4`, well-fit; `k=13`, deliberately under-sparse) produces this census over the 22 well-represented toy features, cos ≥ 0.90:
 
-![Stacked bar chart: recovered features split into firing vs. causally inert. TopK k=4 shows 1 of 22 inert (5%); TopK k=13 shows 6 of 18 inert (33%)](figures/fig3_inert_census.png)
+![Stacked bar chart: recovered features split into firing vs. causally inert, for the good (1/22 inert, 5%) and bad (6/18 inert, 33%) SAEs](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/8fd42d07vdsnvoi6a27y.png)
 
 A cosine match can be maximally confident and still causally wrong — the bad SAE's inert features include one matched at cosine **1.000**:
 
-![Scatter plot of cosine similarity versus ablation specificity on a symlog axis, colored by fired_frac: high-cosine points span the full range from specificity in the hundreds down to exactly zero](figures/fig2_cosine_vs_specificity.png)
+![Scatter of cosine similarity vs. ablation specificity on a symlog axis, points colored by fired_frac: high-cosine points span the full range from specificity in the hundreds down to exactly zero, with feature 8 (cos 0.9997, never fires) annotated](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/65yt0qe733b728fb4kxm.png)
 
 Every summary statistic ships as a bootstrap distribution, not a point estimate — note the bad SAE's median sitting far lower and reaching down toward an inert-dominated tail:
 
-![Boxplot of ablation specificity with individual points on a symlog scale; inert pairs marked as amber X markers sitting at exactly zero](figures/fig1_specificity_boxplot.png)
+![Boxplot with individual points on a symlog scale: ablation specificity for both SAEs, inert pairs marked as amber X's sitting at exactly zero, with the specificity=1 collateral-damage line marked](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/cfokljzjjdzmhhwsd7l8.png)
 
-![Overlaid histograms of 10,000 bootstrap-resampled medians for each SAE](figures/fig4_bootstrap.png)
+![Overlaid histograms of 10,000 bootstrap-resampled medians for each SAE: the good SAE's distribution sits tightly around 150, the bad SAE's is wide and multimodal with mass reaching down toward zero](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/o7bbotd72ocxglg8w8ss.png)
 
 All four figures — and every number behind them — regenerate from scratch with `make reproduce && python scripts/generate_figures.py` (see [Reproduce every number](#reproduce-every-number)).
 

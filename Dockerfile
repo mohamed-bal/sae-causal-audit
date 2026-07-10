@@ -12,7 +12,10 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 WORKDIR /work
 
 # CPU-only torch keeps the image small; the toy regime needs no GPU.
-RUN pip install torch --index-url https://download.pytorch.org/whl/cpu
+# Pinned to match .github/workflows/ci.yml exactly — the whole point of a
+# pinned Docker image is that "the pinned environment" means the same thing
+# everywhere it's invoked.
+RUN pip install torch==2.13.0 --index-url https://download.pytorch.org/whl/cpu
 
 COPY pyproject.toml README.md ./
 COPY src ./src
