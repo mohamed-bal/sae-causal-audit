@@ -1,0 +1,50 @@
+[
+  {
+    "name": "france",
+    "positive": [
+      "The capital of France is",
+      "In Paris, the French people often",
+      "France is a country in Europe whose capital",
+      "The French language is spoken in",
+      "Napoleon ruled France and its capital",
+      "The Eiffel Tower stands in the French capital of",
+      "Wine from France, especially near",
+      "The government of France sits in"
+    ],
+    "negative": [
+      "The capital of Japan is",
+      "In Tokyo, the Japanese people often",
+      "Germany is a country in Europe whose capital",
+      "The Spanish language is spoken in",
+      "Caesar ruled Rome and its capital",
+      "The Burj Khalifa stands in the city of",
+      "Tea from China, especially near",
+      "The government of Canada sits in"
+    ],
+    "readout_tokens": [" Paris", " France", " French"]
+  },
+  {
+    "name": "programming",
+    "positive": [
+      "The Python function returns",
+      "To fix the bug in the code, the developer",
+      "The software compiles and then",
+      "In JavaScript, the variable is declared with",
+      "The programmer wrote a loop that",
+      "The API endpoint responds with",
+      "Debugging the stack trace revealed",
+      "The algorithm sorts the array by"
+    ],
+    "negative": [
+      "The chef's recipe requires",
+      "To fix the leak in the roof, the plumber",
+      "The orchestra tunes and then",
+      "In poetry, the metaphor is expressed with",
+      "The painter made a stroke that",
+      "The waiter responds with",
+      "Tasting the soup revealed",
+      "The librarian sorts the books by"
+    ],
+    "readout_tokens": [" code", " function", " software"]
+  }
+]

@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use this software or its findings, please cite it as below."
+type: software
+title: "sae-causal-audit: causal validation for sparse-autoencoder features"
+abstract: >-
+  A cosine-similarity match between an SAE decoder atom and a concept
+  direction is a correlational claim, not a causal one. This package runs
+  the causal battery (fired-fraction screening, ablation specificity,
+  sign-correct steering) that separates genuinely load-bearing features
+  from geometrically plausible, causally inert ones, with bootstrap
+  confidence intervals and deterministic, hash-verifiable result files.
+authors:
+  - family-names: "Bal"
+    given-names: "Mohamed Abdessalem"
+repository-code: "https://github.com/mohamed-bal/sae-causal-audit"
+license: MIT
+version: 0.1.0
+date-released: "2026-07-09"
+keywords:
+  - mechanistic interpretability
+  - sparse autoencoders
+  - causal validation
+  - superposition

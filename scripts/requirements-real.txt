@@ -1,0 +1,5 @@
+# Optional heavyweight stack for the real-model audit (Colab / GPU box).
+# Pinned to versions verified compatible with each other as of mid-2026;
+# loosen deliberately, not accidentally.
+sae-lens>=5.0
+transformer-lens>=2.0
