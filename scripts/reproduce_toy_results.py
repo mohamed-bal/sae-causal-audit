@@ -127,11 +127,13 @@ def main(argv: list[str] | None = None) -> int:
             metadata={"sae": name, "k": str(k), "regime": "toy"},
         )
 
-        from sae_causal_audit.stats import bootstrap_ci
         import dataclasses
+
+        from sae_causal_audit.stats import bootstrap_ci
+
         wr = [r for r in report.results if mask[r.feature_idx]]
         rec = [r for r in wr if r.cosine >= 0.90]
-        
+
         if rec:
             abl_ci = bootstrap_ci(
                 [r.ablation_specificity for r in rec],
@@ -150,11 +152,9 @@ def main(argv: list[str] | None = None) -> int:
         else:
             abl_ci = None
             st_ci = None
-            
+
         report = dataclasses.replace(
-            report, 
-            ablation_specificity_ci=abl_ci, 
-            steering_specificity_ci=st_ci
+            report, ablation_specificity_ci=abl_ci, steering_specificity_ci=st_ci
         )
 
         save_json(report, args.out / f"audit_{name}.json")
