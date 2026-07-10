@@ -6,3 +6,6 @@ __pycache__/
 .hypothesis/
 results/
 !expected_hashes.json
+
+# downloaded CI artifacts (source of truth is the ci-results artifact, not git)
+ci_latest_results/

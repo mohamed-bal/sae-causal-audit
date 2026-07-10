@@ -126,14 +126,43 @@ def main(argv: list[str] | None = None) -> int:
             config=AuditConfig(n_samples_on=500, n_samples_off=500, seed=0),
             metadata={"sae": name, "k": str(k), "regime": "toy"},
         )
+
+        from sae_causal_audit.stats import bootstrap_ci
+        import dataclasses
+        wr = [r for r in report.results if mask[r.feature_idx]]
+        rec = [r for r in wr if r.cosine >= 0.90]
+        
+        if rec:
+            abl_ci = bootstrap_ci(
+                [r.ablation_specificity for r in rec],
+                statistic="median",
+                confidence=report.config.bootstrap_confidence,
+                n_resamples=report.config.bootstrap_resamples,
+                seed=report.config.seed,
+            )
+            st_ci = bootstrap_ci(
+                [r.steering_specificity for r in rec],
+                statistic="median",
+                confidence=report.config.bootstrap_confidence,
+                n_resamples=report.config.bootstrap_resamples,
+                seed=report.config.seed,
+            )
+        else:
+            abl_ci = None
+            st_ci = None
+            
+        report = dataclasses.replace(
+            report, 
+            ablation_specificity_ci=abl_ci, 
+            steering_specificity_ci=st_ci
+        )
+
         save_json(report, args.out / f"audit_{name}.json")
         (args.out / f"audit_{name}.md").write_text(
             render_markdown(report, title=f"Toy-regime causal audit: TopK k={k}"),
             encoding="utf-8",
         )
 
-        wr = [r for r in report.results if mask[r.feature_idx]]
-        rec = [r for r in wr if r.cosine >= 0.90]
         inert = [r for r in rec if r.causally_inert]
         summary[name] = {
             "recovered": len(rec),
