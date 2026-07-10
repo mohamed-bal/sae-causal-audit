@@ -52,6 +52,7 @@ jobs:
       VECLIB_MAXIMUM_THREADS: "1"
       NUMEXPR_NUM_THREADS: "1"
       PYTHONHASHSEED: "0"
+      ATEN_CPU_CAPABILITY: default
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
