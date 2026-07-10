@@ -57,7 +57,7 @@ print(render_markdown(report))
 
 Running the quick start above on two TopK SAEs from opposite ends of a Pareto front (`k=4`, well-fit; `k=13`, deliberately under-sparse) produces this census over the 22 well-represented toy features, cos ≥ 0.90:
 
-![Stacked bar chart: recovered features split into firing vs. causally inert, for the good (2/22 inert, 9%) and bad (4/17 inert, 24%) SAEs](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/cw5r8xbss8uc7crjqaqp.png)
+![Stacked bar chart: recovered features split into firing vs. causally inert, for the good (2/22 inert, 9%) and bad (4/17 inert, 24%) SAEs](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/bl9mtx1d2pbnw39m3fx2.png)
 
 A cosine match can be maximally confident and still causally wrong — several of the inert features across both SAEs are matched at cosine ≥ 0.999:
 
