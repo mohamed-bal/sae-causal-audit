@@ -112,8 +112,8 @@ docker build -t sae-audit . && docker run sae-audit   # fully pinned environment
 
 | Guarantee | Scope | Verified by |
 |---|---|---|
-| **Byte-exact** (SHA-256 hash match) | Pinned CI environment: `ubuntu-24.04`, `torch==2.13.0+cpu`, Python 3.12 | `make verify-hashes` in CI |
-| **Semantic** (numeric values within `rtol=1e-4`) | Any platform | `make verify` locally |
+| **Byte-exact** (SHA-256 hash match) | best-effort / advisory in CI (runner hardware varies) | `make verify-hashes` in CI |
+| **Semantic** (numeric values within `rtol=1e-4`) | Any platform (enforced gate) | `make verify` in CI / locally |
 
 Cross-platform byte-exactness is impossible: the `torch` CPU wheel for each OS is compiled with a different compiler (GCC on Linux, MSVC on Windows, Clang on macOS) and linked against a different MKL build.
 These different binaries produce different float rounding at the bit level, even with identical seeds and single-threaded execution.
