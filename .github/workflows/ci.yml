@@ -30,7 +30,7 @@ jobs:
   scientific-regression:
     # Regenerates every result from scratch and fails if any number moved.
     # This is the gate that makes "every number is written by code" enforceable.
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 25
     needs: quality
     env:
@@ -42,6 +42,10 @@ jobs:
       MKL_CBWR: COMPATIBLE
       OMP_NUM_THREADS: "1"
       MKL_NUM_THREADS: "1"
+      OPENBLAS_NUM_THREADS: "1"
+      VECLIB_MAXIMUM_THREADS: "1"
+      NUMEXPR_NUM_THREADS: "1"
+      PYTHONHASHSEED: "0"
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5

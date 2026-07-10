@@ -75,7 +75,7 @@ def train_toy_model(cfg: ToyConfig, steps: int = 4000, batch: int = 1024) -> Toy
     model = ToyModel(cfg)
     gen = torch.Generator().manual_seed(cfg.seed + 1)
     imp = model.importance()
-    opt = torch.optim.Adam(model.parameters(), lr=1e-2)
+    opt = torch.optim.Adam(model.parameters(), lr=1e-2, foreach=False)
     for _ in range(steps):
         x = model.sample_batch(batch, gen)
         x_hat = model.output(model.hidden(x))
@@ -120,7 +120,7 @@ def train_topk_sae(
     """Train a TopK SAE on the toy model's hidden activations."""
     sae = TopKSAE(model.cfg.n_hidden, d_sae, k, seed=seed)
     gen = torch.Generator().manual_seed(seed + 2)
-    opt = torch.optim.Adam(sae.parameters(), lr=1e-3)
+    opt = torch.optim.Adam(sae.parameters(), lr=1e-3, foreach=False)
     for _ in range(steps):
         with torch.no_grad():
             h = model.hidden(model.sample_batch(batch, gen))

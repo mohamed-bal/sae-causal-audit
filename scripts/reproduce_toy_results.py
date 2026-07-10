@@ -32,8 +32,21 @@ from pathlib import Path
 os.environ.setdefault("MKL_CBWR", "COMPATIBLE")
 os.environ.setdefault("OMP_NUM_THREADS", "1")
 os.environ.setdefault("MKL_NUM_THREADS", "1")
+# Defensive: cover every BLAS/threading backend that could be active,
+# depending on which library the torch wheel is actually linked against.
+os.environ.setdefault("OPENBLAS_NUM_THREADS", "1")
+os.environ.setdefault("VECLIB_MAXIMUM_THREADS", "1")
+os.environ.setdefault("NUMEXPR_NUM_THREADS", "1")
+# Fix Python's hash seed so any dict/set iteration order is deterministic.
+os.environ.setdefault("PYTHONHASHSEED", "0")
 
 import torch
+
+# Pin inter-op parallelism IMMEDIATELY after import, before any work is
+# scheduled.  torch.set_num_threads (intra-op) is set later in main(), but
+# inter-op must be locked here — it cannot be changed once parallel work
+# has started.
+torch.set_num_interop_threads(1)
 
 from sae_causal_audit import AuditConfig, render_markdown, run_audit, save_json
 from sae_causal_audit.toy import (
@@ -46,6 +59,26 @@ from sae_causal_audit.toy import (
 )
 
 
+def _print_torch_diagnostics() -> None:
+    """Print torch backend info to stderr for CI debugging."""
+    import sys as _sys
+
+    lines = [
+        "=== torch reproducibility diagnostics ===",
+        f"torch version: {torch.__version__}",
+        f"MKL available: {torch.backends.mkl.is_available()}",
+        f"MKL-DNN/oneDNN available: {torch.backends.mkldnn.is_available()}",
+        f"num_threads (intra-op): {torch.get_num_threads()}",
+        f"num_interop_threads (inter-op): {torch.get_num_interop_threads()}",
+        "--- torch.__config__.show() ---",
+        torch.__config__.show(),
+        "--- torch.__config__.parallel_info() ---",
+        torch.__config__.parallel_info(),
+        "=== end diagnostics ===",
+    ]
+    print("\n".join(lines), file=_sys.stderr, flush=True)
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--out", type=Path, default=Path("results"))
@@ -56,6 +89,9 @@ def main(argv: list[str] | None = None) -> int:
     # Determinism guards: single-threaded reductions avoid nondeterministic
     # float accumulation order across machines with different core counts.
     torch.set_num_threads(1)
+
+    # Print backend diagnostics so CI logs reveal what BLAS is actually active.
+    _print_torch_diagnostics()
     try:
         torch.use_deterministic_algorithms(True)
     except RuntimeError as e:
