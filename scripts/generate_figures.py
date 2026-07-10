@@ -114,8 +114,9 @@ def fig_specificity_boxplot(g_rec, b_rec, out: Path) -> None:
     )
     ax.scatter([], [], s=70, marker="X", color=INERT_C, edgecolor="black", lw=0.6,
                label="causally inert (atom never fires)")
-    ax.legend(loc="lower right", frameon=False, fontsize=10)
     fig.tight_layout()
+    fig.subplots_adjust(bottom=0.22)
+    ax.legend(loc="upper center", bbox_to_anchor=(0.5, -0.13), frameon=False, fontsize=10.5, ncol=1)
     fig.savefig(out, bbox_inches="tight")
     plt.close(fig)
 
@@ -142,9 +143,15 @@ def fig_cosine_vs_specificity(g_rec, b_rec, out: Path) -> None:
         spec_val = _cap([worst_f["ablation_specificity"]])[0]
         ax.set_xlim(left=0.84)
         bbox_props = dict(boxstyle="round,pad=0.3", fc="white", ec="gray", lw=0.5, alpha=0.9)
-        text = (f"cos = {worst_f['cosine']:.4f},\n"
-                f"{'never fires' if worst_f['fired_frac'] == 0 else f'fired_frac = {worst_f['fired_frac']:.3f}'},\n"
-                f"ablation spec = {worst_f['ablation_specificity']:.1f}")
+        if worst_f["fired_frac"] == 0:
+            fired_desc = "never fires"
+        else:
+            fired_desc = f"fired_frac = {worst_f['fired_frac']:.3f}"
+        text = (
+            f"cos = {worst_f['cosine']:.4f},\n"
+            f"{fired_desc},\n"
+            f"ablation spec = {worst_f['ablation_specificity']:.1f}"
+        )
         ax.annotate(
             text, xy=(worst_f["cosine"], spec_val), xytext=(0.85, max(10, spec_val)),
             bbox=bbox_props,
