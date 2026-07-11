@@ -61,9 +61,9 @@ class InertCensus:
     """The audit's headline: how many 'recovered' features are causally inert."""
 
     n_matched: int
-    n_recovered: int  # cosine >= threshold
-    n_recovered_inert: int  # cosine >= threshold AND fired_frac == 0
-    inert_rate_among_recovered: float  # the "77%" number, for this SAE
+    n_recovered: int  
+    n_recovered_inert: int  
+    inert_rate_among_recovered: float 
 
     @staticmethod
     def from_results(results: list[CausalResult], threshold: float) -> InertCensus:

@@ -44,7 +44,7 @@ class BootstrapCI:
     n_samples: int
     n_resamples: int
 
-    def __str__(self) -> str:  # pragma: no cover - cosmetic
+    def __str__(self) -> str:  
         pct = round(self.confidence * 100)
         return (
             f"{self.statistic}={self.point:.4g} "
@@ -91,9 +91,9 @@ def bootstrap_ci(
     gen = torch.Generator().manual_seed(seed)
     t = torch.tensor(vals, dtype=torch.float64)
 
-    # Vectorized resampling: (n_resamples, n) index matrix in one shot.
+
     idx = torch.randint(0, n, (n_resamples, n), generator=gen)
-    samples = t[idx]  # (n_resamples, n)
+    samples = t[idx]
     boot = samples.median(dim=1).values if statistic == "median" else samples.mean(dim=1)
 
     alpha = (1.0 - confidence) / 2.0

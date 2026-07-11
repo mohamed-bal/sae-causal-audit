@@ -37,7 +37,7 @@ class TestMatching:
 
     def test_dead_atom_never_wins(self):
         direction = torch.tensor([[1.0, 0.0]])
-        dictionary = torch.tensor([[0.0, 0.0], [0.7, 0.7]])  # dead atom first
+        dictionary = torch.tensor([[0.0, 0.0], [0.7, 0.7]])  
         (res,) = match_features_to_atoms(direction, dictionary)
         assert res.atom_idx == 1
 
@@ -74,7 +74,6 @@ def test_matching_invariants(n_feat, d_sae, d_in, seed):
         assert 0 <= r.atom_idx < d_sae
         assert 0.0 <= r.cosine <= 1.0 + 1e-6
         assert r.sign in (1.0, -1.0)
-        # sign must agree with the true signed cosine of the chosen pair
         a, b = dirs[r.feature_idx], dic[r.atom_idx]
         denom = (a.norm() * b.norm()).clamp_min(1e-12)
         signed = float((a @ b) / denom)

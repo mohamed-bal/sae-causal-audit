@@ -34,17 +34,10 @@ jobs:
         run: pytest tests/ -q
 
   scientific-regression:
-    # Regenerates every result from scratch and fails if any number moved.
-    # This is the gate that makes "every number is written by code" enforceable.
     runs-on: ubuntu-24.04
     timeout-minutes: 25
     needs: quality
     env:
-      # Forces MKL to use the same code path regardless of which CPU
-      # microarchitecture the shared runner happens to land on this time —
-      # without this, results can vary run-to-run even with a pinned torch
-      # version, because MKL auto-detects AVX2/AVX512 support and picks a
-      # different vectorized kernel accordingly.
       MKL_CBWR: COMPATIBLE
       OMP_NUM_THREADS: "1"
       MKL_NUM_THREADS: "1"
@@ -76,11 +69,6 @@ jobs:
           path: results/
 
   regenerate-hashes:
-    # Manually triggered: regenerates expected_hashes.json from the CI
-    # environment.  Use when torch or the runner image is intentionally
-    # bumped — the new baseline is produced BY CI, never locally.
-    #
-    # Trigger: Actions → CI → Run workflow → set regenerate_hashes=true
     if: github.event_name == 'workflow_dispatch' && github.event.inputs.regenerate_hashes == 'true'
     runs-on: ubuntu-24.04
     timeout-minutes: 25

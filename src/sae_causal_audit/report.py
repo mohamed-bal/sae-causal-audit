@@ -29,7 +29,7 @@ def _encode(obj: Any) -> Any:
     if isinstance(obj, float):
         if math.isinf(obj):
             return "inf" if obj > 0 else "-inf"
-        if math.isnan(obj):  # pragma: no cover - metrics never emit NaN
+        if math.isnan(obj): 
             raise ValueError("NaN reached serialization; upstream invariant broken")
         return obj
     if isinstance(obj, dict):
@@ -51,10 +51,6 @@ def _decode(obj: Any) -> Any:
     return obj
 
 
-# Fields that vary run-to-run without any scientific meaning. Excluded from
-# the serialized JSON so that file hashes track *results*, enabling
-# hash-based scientific-regression detection in CI. Wall-clock timing stays
-# available on the in-memory report and in the Markdown render.
 VOLATILE_FIELDS = frozenset({"runtime_seconds"})
 
 

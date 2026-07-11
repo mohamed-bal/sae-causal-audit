@@ -99,7 +99,7 @@ class TestAblation:
         """Downstream mixes atom 0 into both readout dims equally:
         targeted drop == off-target movement -> specificity 1.0."""
         sae = IdentitySAE(2)
-        mix = torch.tensor([[1.0, 1.0], [0.0, 1.0]])  # y = h_hat @ mix
+        mix = torch.tensor([[1.0, 1.0], [0.0, 1.0]])  
 
         def mixing_downstream(h_hat):
             return h_hat @ mix
@@ -141,13 +141,11 @@ class TestSteering:
 
         sae = AntiAlignedSAE()
         acts_off = torch.zeros(6, d)
-        # wrong sign: pushes h_hat[:,0] to -1 -> ReLU clips -> rise == 0
         spec_wrong, rise_wrong, _off_w = steering_effect(
             sae, relu_downstream, acts_off, 0, 0, sign=1.0
         )
         del spec_wrong
         assert rise_wrong == pytest.approx(0.0)
-        # correct sign (as MatchResult would report): rise == +1
         spec_right, rise_right, _ = steering_effect(
             sae, relu_downstream, acts_off, 0, 0, sign=-1.0
         )

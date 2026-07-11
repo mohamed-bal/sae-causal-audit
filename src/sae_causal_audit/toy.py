@@ -157,7 +157,7 @@ class ToyProbe:
 
 def true_directions(model: ToyModel) -> torch.Tensor:
     """Ground-truth feature directions in activation space: columns of W."""
-    return model.W.detach().T.clone()  # (n_features, n_hidden)
+    return model.W.detach().T.clone() 
 
 
 def well_represented_mask(model: ToyModel, norm_threshold: float = 0.1) -> torch.Tensor:

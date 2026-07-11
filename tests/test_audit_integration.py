@@ -44,12 +44,6 @@ def good_sae(toy_model):
 def good_report(toy_model, good_sae):
     mask = well_represented_mask(toy_model)
     dirs = true_directions(toy_model)[mask]
-    # remap: audit feature indices are positions in the masked set, but the
-    # downstream readout is full x_hat — pass readout indices via a probe
-    # over original indices. Simplest correct route: audit only the
-    # well-represented features with their ORIGINAL indices by building
-    # directions for all features and filtering results afterward. Here we
-    # keep original indexing by auditing all and filtering on the mask.
     dirs_all = true_directions(toy_model)
     report = run_audit(
         sae=good_sae,
@@ -68,7 +62,7 @@ class TestGoodSAEQualitative:
         keep = [r for r in report.results if mask[r.feature_idx] and r.cosine >= 0.9]
         assert len(keep) >= 10, "toy setting should recover most represented features"
         firing = [r for r in keep if not r.causally_inert]
-        # article finding: good SAE has HIGH but not perfect causal reliability
+        
         assert len(firing) / len(keep) >= 0.7
         specs = sorted(r.ablation_specificity for r in firing)
         assert specs[len(specs) // 2] > 5.0, "median specificity should be clearly > 1"
@@ -80,7 +74,7 @@ class TestGoodSAEQualitative:
             for r in report.results
             if mask[r.feature_idx] and r.cosine >= 0.9 and not r.causally_inert
         ]
-        # sign-correct steering must not systematically DROP the target
+
         positive = [r for r in keep if r.steering_targeted_rise > -1e-6]
         assert len(positive) / len(keep) >= 0.8
 
@@ -108,7 +102,7 @@ class TestReportRoundTrip:
     def test_json_is_strict(self, good_report, tmp_path):
         report, _, _ = good_report
         p = save_json(report, tmp_path / "r.json")
-        json.loads(p.read_text())  # would raise on Infinity/NaN literals
+        json.loads(p.read_text())  
 
     def test_markdown_renders(self, good_report):
         report, _, _ = good_report
