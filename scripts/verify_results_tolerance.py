@@ -71,6 +71,14 @@ def _flatten_expected(
     return out
 
 
+def _load_json(path: Path) -> dict:
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        print(f"error: {path} is not valid JSON: {exc}", file=sys.stderr)
+        raise SystemExit(2) from exc
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("results_dir", type=Path)
@@ -90,8 +98,8 @@ def main(argv: list[str] | None = None) -> int:
         print(f"error: {args.expected_file} not found", file=sys.stderr)
         return 2
 
-    actual = json.loads(summary_path.read_text(encoding="utf-8"))
-    expected = json.loads(args.expected_file.read_text(encoding="utf-8"))
+    actual = _load_json(summary_path)
+    expected = _load_json(args.expected_file)
 
     actual_flat = _flatten_actual(actual)
     expected_flat = _flatten_expected(expected, args.rtol, args.atol)

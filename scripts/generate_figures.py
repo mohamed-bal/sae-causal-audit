@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from pathlib import Path
 
 import matplotlib
@@ -22,6 +23,9 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 import torch
+
+from sae_causal_audit.stats import bootstrap_ci
+from sae_causal_audit.toy import ToyConfig, train_toy_model, well_represented_mask
 
 GOOD_C, BAD_C, INERT_C = "#2563eb", "#dc2626", "#f59e0b"
 CAP = 3000.0  # display cap for infinite/very large specificity ratios
@@ -49,6 +53,11 @@ def _fx(v):
 
 
 def _load_recovered(path: Path, well_represented: set[int] | None, threshold: float = 0.90):
+    if not path.exists():
+        raise SystemExit(
+            f"error: {path} not found — run `make reproduce` first "
+            "to generate results/*.json"
+        )
     report = json.loads(path.read_text())
     rows = [{k: _fx(v) for k, v in r.items()} for r in report["results"]]
     if well_represented is not None:
@@ -61,15 +70,10 @@ def _cap(vals):
     return [min(v, CAP) if np.isfinite(v) else CAP for v in vals]
 
 
-def _well_represented_indices(results_dir: Path) -> set[int]:
+def _well_represented_indices() -> set[int]:
     """Recompute which toy features are well-represented, matching toy.py's
     definition (‖W_i‖² >= 0.1), so figures use the same population as the
     reproduction script's printed census."""
-    import sys
-
-    sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
-    from sae_causal_audit.toy import ToyConfig, train_toy_model, well_represented_mask
-
     torch.set_num_threads(1)
     torch.use_deterministic_algorithms(True)
     model = train_toy_model(ToyConfig(seed=0), steps=4000)
@@ -166,7 +170,7 @@ def fig_cosine_vs_specificity(g_rec, b_rec, out: Path) -> None:
     plt.close(fig)
 
 
-def fig_inert_census(g_rec, b_rec, out: Path) -> None:
+def fig_inert_census(g_rec, b_rec, n_well_represented: int, out: Path) -> None:
     fig, ax = plt.subplots(figsize=(6.8, 4.2))
     firing = [
         sum(1 for r in g_rec if r["fired_frac"] > 0),
@@ -185,8 +189,8 @@ def fig_inert_census(g_rec, b_rec, out: Path) -> None:
         ax.text(i, tot + 0.3, f"{inert[i]}/{tot} inert ({inert[i]/tot:.0%})", ha="center",
                  fontsize=10, weight="bold")
     ax.set_xticks(x, ["TopK k=4\n(good)", "TopK k=13\n(bad)"])
-    ax.set_ylabel("Recovered features (cos ≥ 0.90, of 22 well-represented)")
-    ax.set_ylim(0, 26)
+    ax.set_ylabel(f"Recovered features (cos \u2265 0.90, of {n_well_represented} well-represented)")
+    ax.set_ylim(0, n_well_represented + 4)
     ax.set_title("The inert census: recovery by cosine vs. recovery in fact")
     ax.legend(frameon=False, fontsize=9)
     fig.tight_layout()
@@ -195,8 +199,6 @@ def fig_inert_census(g_rec, b_rec, out: Path) -> None:
 
 
 def fig_bootstrap(g_rec, b_rec, out: Path) -> None:
-    from sae_causal_audit.stats import bootstrap_ci
-
     fig, ax = plt.subplots(figsize=(7.5, 4.2))
     for rec, c, name in [(g_rec, GOOD_C, "TopK k=4"), (b_rec, BAD_C, "TopK k=13")]:
         vals = _cap([r["ablation_specificity"] for r in rec])
@@ -271,12 +273,12 @@ def main() -> None:
     args = ap.parse_args()
     args.out.mkdir(parents=True, exist_ok=True)
 
-    wr = _well_represented_indices(args.results)
+    wr = _well_represented_indices()
     _, g_rec = _load_recovered(args.results / "audit_good_k4.json", wr)
     _, b_rec = _load_recovered(args.results / "audit_bad_k13.json", wr)
 
     fig_pipeline(args.out / "fig0_pipeline.png")
-    fig_inert_census(g_rec, b_rec, args.out / "fig3_inert_census.png")
+    fig_inert_census(g_rec, b_rec, len(wr), args.out / "fig3_inert_census.png")
     fig_specificity_boxplot(g_rec, b_rec, args.out / "fig1_specificity_boxplot.png")
     fig_cosine_vs_specificity(g_rec, b_rec, args.out / "fig2_cosine_vs_specificity.png")
     fig_bootstrap(g_rec, b_rec, args.out / "fig4_bootstrap.png")

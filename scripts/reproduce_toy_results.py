@@ -17,6 +17,7 @@ Runtime: ~2-4 minutes on a laptop CPU.
 from __future__ import annotations
 
 import argparse
+import dataclasses
 import json
 import os
 import sys
@@ -43,6 +44,7 @@ os.environ.setdefault("PYTHONHASHSEED", "0")
 import torch
 
 from sae_causal_audit import AuditConfig, render_markdown, run_audit, save_json
+from sae_causal_audit.stats import bootstrap_ci
 from sae_causal_audit.toy import (
     ToyConfig,
     ToyProbe,
@@ -126,10 +128,6 @@ def main(argv: list[str] | None = None) -> int:
             config=AuditConfig(n_samples_on=500, n_samples_off=500, seed=0),
             metadata={"sae": name, "k": str(k), "regime": "toy"},
         )
-
-        import dataclasses
-
-        from sae_causal_audit.stats import bootstrap_ci
 
         wr = [r for r in report.results if mask[r.feature_idx]]
         rec = [r for r in wr if r.cosine >= 0.90]
