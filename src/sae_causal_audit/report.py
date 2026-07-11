@@ -29,7 +29,7 @@ def _encode(obj: Any) -> Any:
     if isinstance(obj, float):
         if math.isinf(obj):
             return "inf" if obj > 0 else "-inf"
-        if math.isnan(obj): 
+        if math.isnan(obj):
             raise ValueError("NaN reached serialization; upstream invariant broken")
         return obj
     if isinstance(obj, dict):

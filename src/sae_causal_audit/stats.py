@@ -44,7 +44,7 @@ class BootstrapCI:
     n_samples: int
     n_resamples: int
 
-    def __str__(self) -> str:  
+    def __str__(self) -> str:
         pct = round(self.confidence * 100)
         return (
             f"{self.statistic}={self.point:.4g} "

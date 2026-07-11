@@ -98,15 +98,15 @@ def match_features_to_atoms(
     with torch.no_grad():
         t = _normalize_rows(true_directions.detach().to(torch.float32))
         d = _normalize_rows(dictionary.detach().to(torch.float32))
-        cos = t @ d.T  
+        cos = t @ d.T
         abs_cos = cos.abs()
-        best = abs_cos.argmax(dim=1)  
+        best = abs_cos.argmax(dim=1)
 
         results: list[MatchResult] = []
         for i in range(t.shape[0]):
             j = int(best[i].item())
             signed = float(cos[i, j].item())
-           
+
             sign = 1.0 if signed >= 0.0 else -1.0
             results.append(
                 MatchResult(

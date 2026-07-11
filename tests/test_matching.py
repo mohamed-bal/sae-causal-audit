@@ -37,7 +37,7 @@ class TestMatching:
 
     def test_dead_atom_never_wins(self):
         direction = torch.tensor([[1.0, 0.0]])
-        dictionary = torch.tensor([[0.0, 0.0], [0.7, 0.7]])  
+        dictionary = torch.tensor([[0.0, 0.0], [0.7, 0.7]])
         (res,) = match_features_to_atoms(direction, dictionary)
         assert res.atom_idx == 1
 

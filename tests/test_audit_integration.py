@@ -62,7 +62,7 @@ class TestGoodSAEQualitative:
         keep = [r for r in report.results if mask[r.feature_idx] and r.cosine >= 0.9]
         assert len(keep) >= 10, "toy setting should recover most represented features"
         firing = [r for r in keep if not r.causally_inert]
-        
+
         assert len(firing) / len(keep) >= 0.7
         specs = sorted(r.ablation_specificity for r in firing)
         assert specs[len(specs) // 2] > 5.0, "median specificity should be clearly > 1"
@@ -102,7 +102,7 @@ class TestReportRoundTrip:
     def test_json_is_strict(self, good_report, tmp_path):
         report, _, _ = good_report
         p = save_json(report, tmp_path / "r.json")
-        json.loads(p.read_text())  
+        json.loads(p.read_text())
 
     def test_markdown_renders(self, good_report):
         report, _, _ = good_report

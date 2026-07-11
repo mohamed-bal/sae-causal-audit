@@ -99,7 +99,7 @@ class TestAblation:
         """Downstream mixes atom 0 into both readout dims equally:
         targeted drop == off-target movement -> specificity 1.0."""
         sae = IdentitySAE(2)
-        mix = torch.tensor([[1.0, 1.0], [0.0, 1.0]])  
+        mix = torch.tensor([[1.0, 1.0], [0.0, 1.0]])
 
         def mixing_downstream(h_hat):
             return h_hat @ mix
