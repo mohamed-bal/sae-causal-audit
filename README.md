@@ -11,6 +11,8 @@ A cosine-similarity match between an SAE decoder atom and a concept direction is
 
 This package is that intervention, packaged: a model-agnostic causal audit you can run on any SAE — toy or production.
 
+📄 **arXiv paper (submission in progress):** [From Geometric Recovery to Causal Validation](paper/sae-causal-validation-paper.pdf)
+
 📄 **Full write-up:** [A Cosine Similarity of 1.000 and the Feature Still Never Fires](https://dev.to/mohamed_bal/a-cosine-similarity-of-1000-and-the-feature-still-never-fires-turning-a-causal-inertness-finding-5dhp) — the reproducibility debugging story, the antipodal-pair mechanism, and the full results walkthrough behind this package.
 
 ![Audit pipeline diagram: a SparseAutoencoder and a FeatureProbe feed two parallel paths — matching against W_dec (decoder geometry, correlational) and a causal battery of fired_frac, ablation, and steering (encoder behavior, causal) — which combine into an AuditReport serialized as hash-verified JSON and Markdown](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/h9flfp6a17cwz6plaizr.png)
