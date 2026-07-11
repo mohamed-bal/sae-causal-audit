@@ -64,7 +64,6 @@ import subprocess
 import sys
 import time
 from pathlib import Path
-from typing import Optional
 
 import torch
 
@@ -124,7 +123,7 @@ class Concept:
     readout_tokens: list[str]
 
     @staticmethod
-    def from_dict(d: dict, index: int) -> "Concept":
+    def from_dict(d: dict, index: int) -> Concept:
         if not isinstance(d, dict):
             raise ValueError(f"concept #{index} is not a JSON object")
         missing = [k for k in ("name", "positive", "negative", "readout_tokens") if k not in d]
@@ -140,7 +139,9 @@ class Concept:
             if not isinstance(val, list) or not val:
                 raise ValueError(f"concept {name!r}: {key!r} must be a non-empty list")
             if not all(isinstance(x, str) and x.strip() for x in val):
-                raise ValueError(f"concept {name!r}: every entry in {key!r} must be a non-empty string")
+                raise ValueError(
+                    f"concept {name!r}: every entry in {key!r} must be a non-empty string"
+                )
 
         return Concept(
             name=name,
@@ -223,7 +224,7 @@ class TextConceptProbe(FeatureProbe):
         concepts: list[Concept],
         device: str,
         batch_size: int = 16,
-        cache_dir: Optional[Path] = None,
+        cache_dir: Path | None = None,
     ) -> None:
         self._model = model
         self._hook = hook_name
@@ -235,7 +236,7 @@ class TextConceptProbe(FeatureProbe):
         if cache_dir:
             cache_dir.mkdir(parents=True, exist_ok=True)
 
-    def _cache_path(self, feature_idx: int, positive: bool) -> Optional[Path]:
+    def _cache_path(self, feature_idx: int, positive: bool) -> Path | None:
         if self._cache_dir is None:
             return None
         side = "pos" if positive else "neg"

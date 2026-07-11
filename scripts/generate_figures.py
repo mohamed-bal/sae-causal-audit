@@ -14,7 +14,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import sys
 from pathlib import Path
 
 import matplotlib
@@ -189,7 +188,9 @@ def fig_inert_census(g_rec, b_rec, n_well_represented: int, out: Path) -> None:
         ax.text(i, tot + 0.3, f"{inert[i]}/{tot} inert ({inert[i]/tot:.0%})", ha="center",
                  fontsize=10, weight="bold")
     ax.set_xticks(x, ["TopK k=4\n(good)", "TopK k=13\n(bad)"])
-    ax.set_ylabel(f"Recovered features (cos \u2265 0.90, of {n_well_represented} well-represented)")
+    ax.set_ylabel(
+        f"Recovered features (cos \u2265 0.90, of {n_well_represented} well-represented)"
+    )
     ax.set_ylim(0, n_well_represented + 4)
     ax.set_title("The inert census: recovery by cosine vs. recovery in fact")
     ax.legend(frameon=False, fontsize=9)
