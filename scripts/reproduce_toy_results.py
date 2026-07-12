@@ -22,8 +22,6 @@ import os
 import sys
 from pathlib import Path
 
-
-
 os.environ.setdefault("MKL_CBWR", "COMPATIBLE")
 os.environ.setdefault("OMP_NUM_THREADS", "1")
 os.environ.setdefault("MKL_NUM_THREADS", "1")
@@ -80,7 +78,7 @@ def main(argv: list[str] | None = None) -> int:
     try:
         torch.use_deterministic_algorithms(True)
     except RuntimeError as e:
-       
+
         print(
             f"warning: deterministic algorithms unavailable in this torch "
             f"build ({e}); continuing with seeded-but-not-algorithm-strict "

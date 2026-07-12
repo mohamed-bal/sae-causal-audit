@@ -27,7 +27,7 @@ from sae_causal_audit.stats import bootstrap_ci
 from sae_causal_audit.toy import ToyConfig, train_toy_model, well_represented_mask
 
 GOOD_C, BAD_C, INERT_C = "#2563eb", "#dc2626", "#f59e0b"
-CAP = 3000.0  
+CAP = 3000.0
 
 plt.rcParams.update(
     {

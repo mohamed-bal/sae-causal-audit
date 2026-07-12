@@ -100,7 +100,7 @@ def _capture_environment() -> dict:
         try:
             env["gpu"] = torch.cuda.get_device_name(0)
             env["cuda_version"] = torch.version.cuda
-        except Exception:  
+        except Exception:
             pass
     try:
         commit = subprocess.run(
@@ -110,7 +110,7 @@ def _capture_environment() -> dict:
         )
         if commit.returncode == 0:
             env["git_commit"] = commit.stdout.strip()
-    except Exception:  
+    except Exception:
         pass
     return env
 
@@ -186,9 +186,9 @@ def load_concepts(path: Path) -> list[Concept]:
 def _load_real_stack():
     """Import the heavyweight real-model stack with an actionable failure."""
     try:
-        from sae_lens import SAE  
-        from transformer_lens import HookedTransformer  
-    except ImportError as e: 
+        from sae_lens import SAE
+        from transformer_lens import HookedTransformer
+    except ImportError as e:
         raise SystemExit(
             "Real-model audit requires the optional stack:\n"
             "  pip install -r scripts/requirements-real.txt\n"
@@ -252,7 +252,7 @@ class TextConceptProbe(FeatureProbe):
         try:
             from tqdm import tqdm
             iterator = tqdm(range(0, len(prompts), self._batch_size), desc=desc, leave=False)
-        except ImportError:  
+        except ImportError:
             iterator = range(0, len(prompts), self._batch_size)
 
         outs = []
@@ -263,7 +263,7 @@ class TextConceptProbe(FeatureProbe):
                 _, cache = self._model.run_with_cache(
                     tokens, names_filter=self._hook, return_type=None
                 )
-                outs.append(cache[self._hook][:, -1, :])  
+                outs.append(cache[self._hook][:, -1, :])
         return torch.cat(outs, dim=0).to(self._device)
 
     def _get(self, feature_idx: int, positive: bool, n: int) -> torch.Tensor:
@@ -343,9 +343,9 @@ def build_downstream(model, hook_name: str, readout_token_ids: list[list[int]]):
     def downstream(h_hat: torch.Tensor) -> torch.Tensor:
         with torch.no_grad():
             logits = model(
-                h_hat.unsqueeze(1),  
+                h_hat.unsqueeze(1),
                 start_at_layer=layer,
-            )[:, -1, :] 
+            )[:, -1, :]
         cols = [logits[:, ids].mean(dim=1, keepdim=True) for ids in readout_token_ids]
         return torch.cat(cols, dim=1)
 
