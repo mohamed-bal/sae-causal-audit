@@ -82,11 +82,27 @@ No ground truth exists for a real model, so the audit substitutes:
 pip install -r scripts/requirements-real.txt     # sae-lens + transformer-lens
 python scripts/audit_real_sae.py \
     --model gpt2 --sae-release gpt2-small-res-jb --sae-id blocks.8.hook_resid_pre \
-    --concepts concepts/gpt2_demo_concepts.json \
-    --out results/real_audit_gpt2.json
+    --concepts concepts/concepts_paper_v5_final.json \
+    --out results/real_audit_FINAL.json
 ```
 
 GPT-2-small runs on a free Colab T4 (or CPU, slowly). The probe-direction estimate is explicitly the weakest link of the real regime — which is exactly why the pipeline is calibrated first on the toy regime, where the right answers are known and the test suite asserts them.
+
+### Real-model results
+
+Run against 83 concepts spanning unrelated semantic domains (geography, crafts, sciences, sports, professions — see [`concepts/concepts_paper_v5_final.json`](concepts/concepts_paper_v5_final.json)), matched against `gpt2-small-res-jb/blocks.8.hook_resid_pre`:
+
+| Metric                                | Value             |
+| ------------------------------------- | ----------------- |
+| Matched pairs                         | 83                |
+| Correlationally recovered (cos ≥ 0.5) | 7                 |
+| Recovered but causally inert          | 1 (14%)           |
+| Ablation specificity (median, 95% CI) | 1.63 [0.05, 5.34] |
+| Steering specificity (median, 95% CI) | 2.23 [0.69, 3.54] |
+
+Full report: [`results/real_audit_FINAL.json`](results/real_audit_FINAL.json).
+
+**A secondary finding independent of the inertness rate:** a small number of SAE atoms recur as the nearest match across many semantically unrelated concepts. Atoms `14149` and `17413` each matched 8 different concepts spanning domains as distinct as astronomy, blacksmithing, and cooking — and this pattern replicated across four independently-run concept batches of increasing size (n = 15, 33, 48, 83), ruling out prompt-template artifacts as the cause. Because the matching procedure is a greedy per-feature argmax rather than a bipartite assignment, this kind of collision is a _detectable finding_, not a silently-hidden failure mode (see [Design decisions](#design-decisions-worth-knowing)) — and it is independent real-model evidence for the same under-splitting phenomenon the toy setting was built to probe.
 
 ## Bring your own SAE
 
