@@ -1,0 +1,2242 @@
+[
+  {
+    "name": "france",
+    "positive": [
+      "The capital of France is Paris.",
+      "France is a country in Western Europe.",
+      "French cuisine is famous around the world.",
+      "The Eiffel Tower is located in France.",
+      "The Louvre museum is one of France's top attractions.",
+      "France shares a border with Germany and Spain.",
+      "The French Revolution began in 1789.",
+      "Many tourists visit the French Riviera every summer."
+    ],
+    "negative": [
+      "The capital of Japan is Tokyo.",
+      "Germany is a country in Central Europe.",
+      "Italian cuisine is famous around the world.",
+      "The Statue of Liberty is located in America.",
+      "The Colosseum is one of Italy's top attractions.",
+      "Canada shares a border with the United States.",
+      "The Industrial Revolution began in the 1760s.",
+      "Many tourists visit the Amalfi Coast every summer."
+    ],
+    "readout_tokens": [
+      " Paris",
+      " French"
+    ]
+  },
+  {
+    "name": "japan",
+    "positive": [
+      "The capital of Japan is Tokyo.",
+      "Japan is an island nation in East Asia.",
+      "Japanese cuisine features sushi and ramen.",
+      "Mount Fuji is a famous landmark in Japan.",
+      "The bullet train connects major Japanese cities.",
+      "Japan is known for its cherry blossom season.",
+      "Kyoto was once the imperial capital of Japan.",
+      "Anime and manga are popular Japanese exports."
+    ],
+    "negative": [
+      "The capital of Brazil is Brasilia.",
+      "Brazil is a large nation in South America.",
+      "Mexican cuisine features tacos and tamales.",
+      "The Andes is a famous mountain range in Chile.",
+      "The highway connects major American cities.",
+      "Brazil is known for its Carnival season.",
+      "Rio was once the capital of Brazil.",
+      "Telenovelas are popular Brazilian exports."
+    ],
+    "readout_tokens": [
+      " Tokyo",
+      " Japanese"
+    ]
+  },
+  {
+    "name": "programming",
+    "positive": [
+      "She wrote a function to sort the array efficiently.",
+      "The compiler flagged a syntax error in the code.",
+      "He debugged the program using breakpoints.",
+      "Python is a popular programming language.",
+      "The developer pushed the commit to the repository.",
+      "The algorithm runs in logarithmic time.",
+      "The team refactored the codebase for readability.",
+      "She wrote unit tests before deploying the software."
+    ],
+    "negative": [
+      "She painted a mural on the community wall.",
+      "The chef flagged a mistake in the recipe.",
+      "He watered the garden using a hose.",
+      "Spanish is a popular spoken language.",
+      "The farmer delivered the harvest to the market.",
+      "The horse runs in a circular track.",
+      "The team rearranged the furniture for comfort.",
+      "She baked bread before serving the guests."
+    ],
+    "readout_tokens": [
+      " code",
+      " function"
+    ]
+  },
+  {
+    "name": "basketball",
+    "positive": [
+      "He scored a three-pointer at the buzzer.",
+      "The team practiced free throws after training.",
+      "LeBron James is a famous basketball player.",
+      "The referee called a foul on the defender.",
+      "She dribbled past two defenders and dunked.",
+      "The NBA finals attracted millions of viewers.",
+      "The coach called a timeout in the fourth quarter.",
+      "The point guard assisted on the winning shot."
+    ],
+    "negative": [
+      "He kicked a penalty at the final whistle.",
+      "The team practiced serves after training.",
+      "Lionel Messi is a famous soccer player.",
+      "The umpire called a strike on the batter.",
+      "She swam past two competitors and finished first.",
+      "The World Cup final attracted millions of viewers.",
+      "The coach called a substitution in the second half.",
+      "The midfielder assisted on the winning goal."
+    ],
+    "readout_tokens": [
+      " basketball",
+      " NBA"
+    ]
+  },
+  {
+    "name": "cooking",
+    "positive": [
+      "She simmered the sauce for twenty minutes.",
+      "The recipe calls for two cups of flour.",
+      "He seasoned the steak with salt and pepper.",
+      "The chef sharpened his knife before chopping.",
+      "The oven needs to preheat to 350 degrees.",
+      "She whisked the eggs until they were fluffy.",
+      "The soup needs more garlic and thyme.",
+      "He marinated the chicken overnight in the fridge."
+    ],
+    "negative": [
+      "She sanded the wood for twenty minutes.",
+      "The blueprint calls for two meters of cable.",
+      "He tightened the bolt with a wrench.",
+      "The mechanic checked his gauge before driving.",
+      "The engine needs to warm up to operating temperature.",
+      "She hammered the nails until they were flush.",
+      "The circuit needs more resistors and capacitors.",
+      "He stored the tools overnight in the garage."
+    ],
+    "readout_tokens": [
+      " recipe",
+      " cook"
+    ]
+  },
+  {
+    "name": "medicine",
+    "positive": [
+      "The doctor prescribed antibiotics for the infection.",
+      "The nurse checked the patient's blood pressure.",
+      "The surgeon performed the operation successfully.",
+      "The patient reported symptoms of a fever.",
+      "The clinic offers vaccinations every Tuesday.",
+      "The pharmacist filled the prescription quickly.",
+      "The hospital admitted the patient for observation.",
+      "The diagnosis confirmed a mild case of pneumonia."
+    ],
+    "negative": [
+      "The lawyer filed paperwork for the lawsuit.",
+      "The accountant checked the company's balance sheet.",
+      "The architect completed the design successfully.",
+      "The client reported concerns about the budget.",
+      "The office offers consultations every Tuesday.",
+      "The clerk filed the documents quickly.",
+      "The bank approved the loan for review.",
+      "The audit confirmed a minor discrepancy in accounts."
+    ],
+    "readout_tokens": [
+      " doctor",
+      " patient"
+    ]
+  },
+  {
+    "name": "music",
+    "positive": [
+      "She played the violin at the concert hall.",
+      "The band released a new album last week.",
+      "He tuned his guitar before the performance.",
+      "The orchestra rehearsed the symphony all afternoon.",
+      "The singer hit a high note during the chorus.",
+      "The drummer kept the beat throughout the song.",
+      "The pianist practiced scales every morning.",
+      "The choir performed at the cathedral on Sunday."
+    ],
+    "negative": [
+      "She reviewed the contract at the law office.",
+      "The company released a new product last week.",
+      "He calibrated his instrument before the experiment.",
+      "The lab tested the compound all afternoon.",
+      "The engineer solved a problem during the meeting.",
+      "The pilot kept the altitude throughout the flight.",
+      "The student practiced equations every morning.",
+      "The team presented at the conference on Sunday."
+    ],
+    "readout_tokens": [
+      " music",
+      " song"
+    ]
+  },
+  {
+    "name": "weather",
+    "positive": [
+      "The forecast predicts heavy rain tomorrow.",
+      "A cold front is moving in from the north.",
+      "The temperature dropped below freezing overnight.",
+      "Thunderstorms are expected later this afternoon.",
+      "The humidity made the summer day feel hotter.",
+      "Snow covered the mountains after the storm.",
+      "The meteorologist warned of strong winds.",
+      "Clear skies are expected for the weekend."
+    ],
+    "negative": [
+      "The report predicts heavy traffic tomorrow.",
+      "A new policy is moving in from the capital.",
+      "The stock price dropped below expectations overnight.",
+      "Negotiations are expected later this afternoon.",
+      "The crowd made the summer concert feel livelier.",
+      "Dust covered the shelves after the renovation.",
+      "The analyst warned of strong competition.",
+      "Clear results are expected for the quarter."
+    ],
+    "readout_tokens": [
+      " weather",
+      " rain"
+    ]
+  },
+  {
+    "name": "finance",
+    "positive": [
+      "The stock market rallied after the earnings report.",
+      "She invested in a diversified portfolio of bonds.",
+      "The bank raised interest rates last quarter.",
+      "The startup secured a round of venture funding.",
+      "The analyst forecasted steady revenue growth.",
+      "The company reported a strong quarterly profit.",
+      "Investors watched the currency exchange rate closely.",
+      "The fund manager rebalanced the equity holdings."
+    ],
+    "negative": [
+      "The garden bloomed after the spring rain.",
+      "She hiked along a scenic trail of pines.",
+      "The chef raised the oven temperature last hour.",
+      "The team secured a spot in the tournament finals.",
+      "The teacher forecasted a difficult upcoming exam.",
+      "The bakery reported a strong batch of bread.",
+      "Tourists watched the sunset horizon closely.",
+      "The librarian rearranged the fiction section shelves."
+    ],
+    "readout_tokens": [
+      " market",
+      " stock"
+    ]
+  },
+  {
+    "name": "space",
+    "positive": [
+      "The rocket launched successfully into orbit.",
+      "Astronauts conducted experiments aboard the station.",
+      "The telescope captured images of a distant galaxy.",
+      "NASA announced a new mission to Mars.",
+      "The satellite transmitted data back to Earth.",
+      "The spacecraft docked with the space station.",
+      "Scientists discovered a new exoplanet nearby.",
+      "The astronaut floated freely in zero gravity."
+    ],
+    "negative": [
+      "The ferry departed successfully from the harbor.",
+      "Divers conducted surveys along the coral reef.",
+      "The camera captured images of a distant mountain.",
+      "The city announced a new project downtown.",
+      "The buoy transmitted data back to the shore.",
+      "The submarine docked with the naval base.",
+      "Researchers discovered a new species nearby.",
+      "The swimmer floated freely in the calm lake."
+    ],
+    "readout_tokens": [
+      " space",
+      " orbit"
+    ]
+  },
+  {
+    "name": "law",
+    "positive": [
+      "The judge issued a ruling in the case.",
+      "The lawyer presented evidence to the jury.",
+      "The court scheduled a hearing for next week.",
+      "The witness testified under oath.",
+      "The defendant pleaded not guilty to the charges.",
+      "The attorney filed an appeal with the court.",
+      "The jury deliberated for several hours.",
+      "The prosecutor cross-examined the witness."
+    ],
+    "negative": [
+      "The teacher issued a grade in the class.",
+      "The chef presented dishes to the guests.",
+      "The gym scheduled a session for next week.",
+      "The performer sang under the spotlight.",
+      "The applicant agreed to the terms of the offer.",
+      "The editor sent a draft to the publisher.",
+      "The committee met for several hours.",
+      "The interviewer questioned the candidate."
+    ],
+    "readout_tokens": [
+      " court",
+      " judge"
+    ]
+  },
+  {
+    "name": "ocean",
+    "positive": [
+      "The waves crashed against the rocky shore.",
+      "A pod of dolphins swam near the boat.",
+      "The tide rose steadily throughout the evening.",
+      "Coral reefs support diverse marine life.",
+      "The sailor navigated through rough seas.",
+      "The submarine descended into the deep ocean.",
+      "Fishermen cast their nets before dawn.",
+      "The lighthouse guided ships along the coastline."
+    ],
+    "negative": [
+      "The wind rustled against the tall grass.",
+      "A herd of elephants walked near the river.",
+      "The temperature rose steadily throughout the afternoon.",
+      "Forests support diverse plant life.",
+      "The hiker navigated through rough terrain.",
+      "The elevator descended into the deep basement.",
+      "Farmers planted their seeds before dawn.",
+      "The signpost guided travelers along the highway."
+    ],
+    "readout_tokens": [
+      " ocean",
+      " sea"
+    ]
+  },
+  {
+    "name": "war",
+    "positive": [
+      "The army advanced across the front line.",
+      "The general ordered a strategic retreat.",
+      "Soldiers dug trenches before the battle.",
+      "The treaty ended the decade-long conflict.",
+      "The commander deployed reinforcements at dawn.",
+      "The siege lasted for several months.",
+      "The battalion captured the enemy stronghold.",
+      "Civilians evacuated the city before the invasion."
+    ],
+    "negative": [
+      "The crew advanced across the finish line.",
+      "The manager ordered a strategic budget cut.",
+      "Workers dug foundations before the construction.",
+      "The agreement ended the decade-long dispute.",
+      "The captain deployed the lifeboats at dawn.",
+      "The festival lasted for several days.",
+      "The team captured the championship trophy.",
+      "Residents evacuated the building before the renovation."
+    ],
+    "readout_tokens": [
+      " war",
+      " battle"
+    ]
+  },
+  {
+    "name": "computers",
+    "positive": [
+      "The laptop crashed after the update installed.",
+      "She upgraded the RAM in her desktop computer.",
+      "The server processed thousands of requests per second.",
+      "He connected the monitor to the new computer.",
+      "The hard drive failed after years of use.",
+      "The processor overheated during the benchmark test.",
+      "She backed up her files to an external drive.",
+      "The keyboard shortcut saved her a lot of time."
+    ],
+    "negative": [
+      "The truck stalled after the delivery finished.",
+      "She replaced the tires on her family car.",
+      "The factory produced thousands of units per hour.",
+      "He connected the hose to the new sprinkler.",
+      "The engine failed after years of use.",
+      "The furnace overheated during the winter test.",
+      "She stored her tools in an external shed.",
+      "The shortcut path saved her a lot of time."
+    ],
+    "readout_tokens": [
+      " computer",
+      " laptop"
+    ]
+  },
+  {
+    "name": "history",
+    "positive": [
+      "The ancient empire spanned three continents.",
+      "Historians studied the ruins of the old city.",
+      "The medieval castle was built in the twelfth century.",
+      "The archaeologist unearthed artifacts from the dig site.",
+      "The dynasty ruled for over four hundred years.",
+      "The manuscript revealed details about the ancient civilization.",
+      "The monument commemorates a historic battle.",
+      "Scholars debated the causes of the empire's collapse."
+    ],
+    "negative": [
+      "The new startup spanned three continents.",
+      "Engineers studied the design of the prototype model.",
+      "The modern skyscraper was built in the twenty-first century.",
+      "The technician unearthed bugs from the code base.",
+      "The company operated for over four hundred days.",
+      "The report revealed details about the current market.",
+      "The plaque commemorates a recent achievement.",
+      "Analysts debated the causes of the company's growth."
+    ],
+    "readout_tokens": [
+      " ancient",
+      " history"
+    ]
+  },
+  {
+    "name": "germany",
+    "positive": [
+      "The capital of Germany is Berlin.",
+      "Germany is known for its automotive industry.",
+      "German engineering emphasizes precision and quality.",
+      "The Berlin Wall fell in 1989.",
+      "Bavarian cuisine features sausages and pretzels.",
+      "The Autobahn has sections with no speed limit.",
+      "Oktoberfest attracts visitors from around the world.",
+      "Germany borders nine other European countries."
+    ],
+    "negative": [
+      "The capital of Egypt is Cairo.",
+      "Egypt is known for its ancient pyramids.",
+      "Egyptian architecture emphasizes scale and symmetry.",
+      "The Aswan Dam was completed in 1970.",
+      "Egyptian cuisine features falafel and koshari.",
+      "The Nile has sections with strong currents.",
+      "The pyramids attract visitors from around the world.",
+      "Egypt borders several countries in North Africa."
+    ],
+    "readout_tokens": [
+      " Berlin",
+      " German"
+    ]
+  },
+  {
+    "name": "china",
+    "positive": [
+      "The capital of China is Beijing.",
+      "China has the world's largest population.",
+      "The Great Wall of China stretches thousands of miles.",
+      "Chinese New Year is celebrated with fireworks.",
+      "Mandarin is the most spoken language in China.",
+      "The Yangtze River flows through central China.",
+      "Chinese manufacturing dominates global supply chains.",
+      "Pandas are native to the mountains of China."
+    ],
+    "negative": [
+      "The capital of Australia is Canberra.",
+      "Australia has some of the world's unique wildlife.",
+      "The Great Barrier Reef stretches thousands of miles.",
+      "Australia Day is celebrated with barbecues.",
+      "English is the most spoken language in Australia.",
+      "The Murray River flows through southern Australia.",
+      "Australian mining dominates global export markets.",
+      "Koalas are native to the forests of Australia."
+    ],
+    "readout_tokens": [
+      " China",
+      " Chinese"
+    ]
+  },
+  {
+    "name": "soccer",
+    "positive": [
+      "He scored the winning goal in extra time.",
+      "The team practiced corner kicks after training.",
+      "Cristiano Ronaldo is a famous soccer player.",
+      "The referee showed a yellow card to the defender.",
+      "She dribbled past two defenders and scored.",
+      "The World Cup final attracted billions of viewers.",
+      "The coach called a substitution in the second half.",
+      "The midfielder assisted on the winning goal."
+    ],
+    "negative": [
+      "He sank the winning putt in the playoff.",
+      "The team practiced serves after training.",
+      "Serena Williams is a famous tennis player.",
+      "The umpire showed a warning to the batter.",
+      "She swam past two competitors and won.",
+      "The Grand Slam final attracted millions of viewers.",
+      "The coach called a timeout in the second set.",
+      "The catcher assisted on the winning play."
+    ],
+    "readout_tokens": [
+      " soccer",
+      " goal"
+    ]
+  },
+  {
+    "name": "aviation",
+    "positive": [
+      "The pilot requested clearance for takeoff.",
+      "The airplane cruised at thirty thousand feet.",
+      "The control tower guided the aircraft to the runway.",
+      "Turbulence shook the cabin during the flight.",
+      "The airline announced a delay due to weather.",
+      "The co-pilot checked the instrument panel carefully.",
+      "The jet engine roared as it accelerated down the runway.",
+      "Passengers fastened their seatbelts before landing."
+    ],
+    "negative": [
+      "The captain requested permission for departure.",
+      "The ship sailed at twenty knots.",
+      "The harbor master guided the vessel to the dock.",
+      "Waves rocked the boat during the crossing.",
+      "The ferry announced a delay due to fog.",
+      "The first mate checked the navigation charts carefully.",
+      "The diesel engine roared as it accelerated from port.",
+      "Passengers gathered on deck before arrival."
+    ],
+    "readout_tokens": [
+      " pilot",
+      " flight"
+    ]
+  },
+  {
+    "name": "chemistry",
+    "positive": [
+      "The chemist mixed the reagents in a beaker.",
+      "The reaction produced a bright blue precipitate.",
+      "She measured the pH of the solution carefully.",
+      "The molecule contains two hydrogen atoms.",
+      "The lab technician calibrated the spectrometer.",
+      "Heating the compound caused it to change color.",
+      "The catalyst sped up the chemical reaction.",
+      "The experiment required careful temperature control."
+    ],
+    "negative": [
+      "The chef mixed the ingredients in a bowl.",
+      "The bakery produced a fresh batch of bread.",
+      "She measured the length of the fabric carefully.",
+      "The recipe contains two cups of sugar.",
+      "The tailor calibrated the sewing machine.",
+      "Washing the garment caused it to shrink slightly.",
+      "The spice enhanced the flavor of the dish.",
+      "The dish required careful timing to prepare."
+    ],
+    "readout_tokens": [
+      " chemical",
+      " reaction"
+    ]
+  },
+  {
+    "name": "biology",
+    "positive": [
+      "The cell divided into two identical daughter cells.",
+      "DNA carries the genetic instructions for the organism.",
+      "The biologist observed the bacteria under a microscope.",
+      "Photosynthesis converts sunlight into chemical energy.",
+      "The species adapted to its changing environment.",
+      "Enzymes speed up biological reactions in the body.",
+      "The researcher sequenced the genome of the plant.",
+      "Mitochondria produce energy for the cell."
+    ],
+    "negative": [
+      "The company split into two separate divisions.",
+      "The blueprint carries the design instructions for the building.",
+      "The inspector observed the structure with a checklist.",
+      "The turbine converts wind into electrical energy.",
+      "The factory adapted to its changing market demands.",
+      "Machines speed up the manufacturing process in the plant.",
+      "The engineer designed the layout of the bridge.",
+      "The generator produces power for the facility."
+    ],
+    "readout_tokens": [
+      " cell",
+      " biological"
+    ]
+  },
+  {
+    "name": "mathematics",
+    "positive": [
+      "She solved the equation using algebra.",
+      "The theorem was proven by contradiction.",
+      "The professor explained the concept of derivatives.",
+      "The triangle has three equal angles.",
+      "The student calculated the area under the curve.",
+      "Prime numbers have exactly two divisors.",
+      "The proof relied on mathematical induction.",
+      "The function is continuous over the given interval."
+    ],
+    "negative": [
+      "She resolved the dispute using mediation.",
+      "The claim was verified by cross-examination.",
+      "The manager explained the concept of quarterly targets.",
+      "The building has three equal wings.",
+      "The accountant calculated the total under the contract.",
+      "Loyal customers have exactly two membership tiers.",
+      "The strategy relied on careful market research.",
+      "The service is available over the given period."
+    ],
+    "readout_tokens": [
+      " equation",
+      " theorem"
+    ]
+  },
+  {
+    "name": "painting",
+    "positive": [
+      "The artist mixed blue and yellow to make green.",
+      "She sketched the outline before adding color.",
+      "The painting hung in the gallery for the exhibition.",
+      "He used a fine brush to add small details.",
+      "The canvas captured the light of the sunset.",
+      "The museum displayed works from the Renaissance period.",
+      "She applied thick layers of oil paint to the canvas.",
+      "The art critic praised the composition and color palette."
+    ],
+    "negative": [
+      "The chemist mixed acid and base to make salt.",
+      "She outlined the report before adding data.",
+      "The report circulated in the office for the meeting.",
+      "He used a small tool to add fine adjustments.",
+      "The lens captured the detail of the specimen.",
+      "The archive displayed documents from the colonial period.",
+      "She applied thick layers of varnish to the wood.",
+      "The reviewer praised the structure and clarity of the essay."
+    ],
+    "readout_tokens": [
+      " painting",
+      " canvas"
+    ]
+  },
+  {
+    "name": "photography",
+    "positive": [
+      "She adjusted the aperture to control the exposure.",
+      "The photographer captured the sunset over the mountains.",
+      "He used a tripod to keep the camera steady.",
+      "The image was slightly blurred due to camera shake.",
+      "She edited the photos using contrast and saturation tools.",
+      "The lens focused sharply on the subject's eyes.",
+      "The photographer waited for the perfect lighting.",
+      "The gallery exhibited black and white portraits."
+    ],
+    "negative": [
+      "She adjusted the thermostat to control the temperature.",
+      "The engineer captured the readings from the sensors.",
+      "He used a clamp to keep the pipe steady.",
+      "The signal was slightly distorted due to interference.",
+      "She edited the document using formatting and spacing tools.",
+      "The microscope focused sharply on the sample's surface.",
+      "The technician waited for the correct calibration.",
+      "The lab displayed charts and measurement tables."
+    ],
+    "readout_tokens": [
+      " camera",
+      " photo"
+    ]
+  },
+  {
+    "name": "literature",
+    "positive": [
+      "The novelist wrote a compelling story about loss.",
+      "The poem used vivid metaphors to describe nature.",
+      "The protagonist faced a difficult moral choice.",
+      "The author's prose style was praised by critics.",
+      "The novel was translated into twenty languages.",
+      "The plot unfolded through a series of flashbacks.",
+      "The book explored themes of identity and belonging.",
+      "Literary scholars debated the meaning of the ending."
+    ],
+    "negative": [
+      "The engineer designed a functional bridge across the river.",
+      "The report used detailed charts to describe growth.",
+      "The manager faced a difficult budget decision.",
+      "The architect's design style was praised by reviewers.",
+      "The manual was translated into twenty languages.",
+      "The project unfolded through a series of milestones.",
+      "The course explored topics of finance and accounting.",
+      "Analysts debated the meaning of the quarterly results."
+    ],
+    "readout_tokens": [
+      " novel",
+      " story"
+    ]
+  },
+  {
+    "name": "religion",
+    "positive": [
+      "The congregation gathered for the Sunday service.",
+      "The temple was built centuries ago by devoted followers.",
+      "Pilgrims traveled long distances to visit the shrine.",
+      "The scripture was read aloud during the ceremony.",
+      "The priest delivered a sermon about compassion.",
+      "The festival commemorates an important religious event.",
+      "Believers observed the fast during the holy month.",
+      "The monastery housed monks devoted to prayer."
+    ],
+    "negative": [
+      "The audience gathered for the Sunday concert.",
+      "The stadium was built decades ago by dedicated engineers.",
+      "Fans traveled long distances to attend the match.",
+      "The lineup was announced aloud before the show.",
+      "The host delivered a speech about teamwork.",
+      "The festival commemorates an important cultural event.",
+      "Athletes observed the diet during the training season.",
+      "The academy housed students devoted to practice."
+    ],
+    "readout_tokens": [
+      " prayer",
+      " temple"
+    ]
+  },
+  {
+    "name": "politics",
+    "positive": [
+      "The senator introduced a new bill in Congress.",
+      "The election results were announced late at night.",
+      "The candidate campaigned across several swing states.",
+      "The president signed the legislation into law.",
+      "Voters lined up outside the polling stations.",
+      "The debate focused on healthcare and taxation.",
+      "The party won a majority in parliament.",
+      "The ambassador negotiated a new trade agreement."
+    ],
+    "negative": [
+      "The coach introduced a new strategy in practice.",
+      "The tournament results were announced late at night.",
+      "The team traveled across several host cities.",
+      "The referee confirmed the outcome after review.",
+      "Fans lined up outside the stadium gates.",
+      "The interview focused on training and recovery.",
+      "The club won a title in the league.",
+      "The manager negotiated a new sponsorship deal."
+    ],
+    "readout_tokens": [
+      " election",
+      " senator"
+    ]
+  },
+  {
+    "name": "education",
+    "positive": [
+      "The teacher assigned homework due next Monday.",
+      "The students took notes during the lecture.",
+      "The university offered scholarships to top applicants.",
+      "The professor graded the final exams over the weekend.",
+      "The classroom was equipped with new computers.",
+      "The curriculum included courses in science and math.",
+      "The principal announced a new school policy.",
+      "The tutor helped the student prepare for the test."
+    ],
+    "negative": [
+      "The manager assigned tasks due next Monday.",
+      "The employees took notes during the meeting.",
+      "The company offered bonuses to top performers.",
+      "The supervisor reviewed the reports over the weekend.",
+      "The office was equipped with new printers.",
+      "The project included phases in design and testing.",
+      "The director announced a new company policy.",
+      "The mentor helped the intern prepare for the presentation."
+    ],
+    "readout_tokens": [
+      " school",
+      " student"
+    ]
+  },
+  {
+    "name": "agriculture",
+    "positive": [
+      "The farmer planted wheat in the north field.",
+      "The tractor plowed the soil before planting season.",
+      "The harvest yielded a record crop this year.",
+      "Irrigation systems watered the fields during the drought.",
+      "The rancher tended to the herd of cattle.",
+      "The orchard produced apples ready for picking.",
+      "Fertilizer was applied to improve soil quality.",
+      "The greenhouse grew tomatoes throughout the winter."
+    ],
+    "negative": [
+      "The developer built houses in the north district.",
+      "The crane lifted the beams before construction season.",
+      "The factory produced a record output this year.",
+      "Cooling systems ventilated the rooms during the heat.",
+      "The keeper tended to the collection of exhibits.",
+      "The workshop produced furniture ready for delivery.",
+      "Paint was applied to improve surface quality.",
+      "The warehouse stored goods throughout the winter."
+    ],
+    "readout_tokens": [
+      " farmer",
+      " crop"
+    ]
+  },
+  {
+    "name": "automobiles",
+    "positive": [
+      "He changed the oil in his car this weekend.",
+      "The mechanic replaced the worn brake pads.",
+      "The engine roared to life after the repair.",
+      "She parked the car in the driveway.",
+      "The dealership offered a discount on new sedans.",
+      "The tires needed to be rotated after the trip.",
+      "The driver merged onto the highway carefully.",
+      "The dashboard warning light indicated low fuel."
+    ],
+    "negative": [
+      "He watered the plants in his yard this weekend.",
+      "The electrician replaced the faulty wiring.",
+      "The generator hummed to life after the repair.",
+      "She placed the boxes in the storage room.",
+      "The store offered a discount on new furniture.",
+      "The filters needed to be changed after the season.",
+      "The visitor entered the building carefully.",
+      "The panel warning light indicated low battery."
+    ],
+    "readout_tokens": [
+      " car",
+      " engine"
+    ]
+  },
+  {
+    "name": "fashion",
+    "positive": [
+      "The designer unveiled a new collection at the show.",
+      "She paired the dress with matching accessories.",
+      "The tailor adjusted the suit for a perfect fit.",
+      "The runway featured bold colors and patterns.",
+      "The magazine featured the latest fashion trends.",
+      "He chose a tie that matched his jacket.",
+      "The boutique sold handmade leather handbags.",
+      "The model walked confidently down the catwalk."
+    ],
+    "negative": [
+      "The chef unveiled a new menu at the restaurant.",
+      "She paired the wine with a matching dessert.",
+      "The technician adjusted the engine for a perfect tune.",
+      "The report featured detailed charts and figures.",
+      "The journal featured the latest scientific findings.",
+      "He chose a route that matched his schedule.",
+      "The shop sold handmade wooden furniture.",
+      "The presenter walked confidently onto the stage."
+    ],
+    "readout_tokens": [
+      " fashion",
+      " designer"
+    ]
+  },
+  {
+    "name": "architecture",
+    "positive": [
+      "The architect designed a modern glass skyscraper.",
+      "The building's facade featured intricate stonework.",
+      "The blueprint outlined the layout of the structure.",
+      "The dome was an engineering marvel of its time.",
+      "The construction crew poured the foundation first.",
+      "The cathedral's arches supported the weight of the roof.",
+      "The city skyline was defined by tall towers.",
+      "The renovation preserved the historic brick exterior."
+    ],
+    "negative": [
+      "The composer wrote a modern symphonic piece.",
+      "The album's cover featured intricate artwork.",
+      "The script outlined the plot of the film.",
+      "The finale was a dramatic climax of the show.",
+      "The production crew filmed the opening scene first.",
+      "The choir's harmonies supported the melody of the song.",
+      "The playlist was defined by upbeat tracks.",
+      "The remaster preserved the original analog sound."
+    ],
+    "readout_tokens": [
+      " building",
+      " architect"
+    ]
+  },
+  {
+    "name": "geology",
+    "positive": [
+      "The geologist studied the layers of sedimentary rock.",
+      "The volcano erupted after months of tremors.",
+      "Tectonic plates shift slowly over millions of years.",
+      "The canyon was carved by centuries of erosion.",
+      "The mineral sample contained traces of quartz.",
+      "Earthquakes occur along fault lines in the crust.",
+      "The glacier retreated significantly over the decade.",
+      "Fossils were discovered embedded in the limestone."
+    ],
+    "negative": [
+      "The historian studied the pages of the ancient manuscript.",
+      "The market crashed after months of uncertainty.",
+      "Currency values shift slowly over several years.",
+      "The trail was worn by decades of foot traffic.",
+      "The soil sample contained traces of clay.",
+      "Delays occur along supply lines in the network.",
+      "The company downsized significantly over the decade.",
+      "Artifacts were discovered embedded in the ancient wall."
+    ],
+    "readout_tokens": [
+      " rock",
+      " geological"
+    ]
+  },
+  {
+    "name": "gardening",
+    "positive": [
+      "She pruned the rose bushes before the frost arrived.",
+      "The soil needed compost to support new seedlings.",
+      "He planted tomato seedlings along the back fence.",
+      "Weeds had overtaken the vegetable patch by midsummer.",
+      "The gardener mulched the flower beds to retain moisture.",
+      "A trellis supported the climbing sweet peas.",
+      "She deadheaded the marigolds to encourage more blooms.",
+      "The greenhouse protected the seedlings from late frost."
+    ],
+    "negative": [
+      "The editor cut two paragraphs before the deadline arrived.",
+      "The budget needed adjustments to support new hires.",
+      "He filed the quarterly reports along the usual timeline.",
+      "Errors had crept into the spreadsheet by midyear.",
+      "The manager streamlined the workflow to retain efficiency.",
+      "A mentor supported the junior analyst's career growth.",
+      "She trimmed the presentation to keep the audience engaged.",
+      "The backup system protected the files from data loss."
+    ],
+    "readout_tokens": [
+      " garden",
+      " plant"
+    ]
+  },
+  {
+    "name": "journalism",
+    "positive": [
+      "The reporter verified the source before publishing the story.",
+      "An editor trimmed the article down to eight hundred words.",
+      "The newsroom scrambled to cover the breaking story.",
+      "She interviewed three witnesses for the investigative piece.",
+      "The headline was rewritten to better capture the story.",
+      "A correction was issued after the factual error was found.",
+      "The photojournalist captured the scene from the front lines.",
+      "Deadlines forced the team to finalize the layout by midnight."
+    ],
+    "negative": [
+      "The chef tasted the sauce before serving the dish.",
+      "A tailor shortened the sleeves down to the wrist.",
+      "The kitchen scrambled to prepare the evening's specials.",
+      "She sampled three wines for the dinner pairing.",
+      "The menu was rewritten to better reflect the season.",
+      "A refund was issued after the order was found incorrect.",
+      "The sommelier described the wine from the vineyard's terroir.",
+      "Reservations forced the staff to finalize seating by evening."
+    ],
+    "readout_tokens": [
+      " journalist",
+      " reporter"
+    ]
+  },
+  {
+    "name": "theater",
+    "positive": [
+      "The actors rehearsed the final act for three hours straight.",
+      "A hush fell over the audience as the curtain rose.",
+      "The director blocked the scene near center stage.",
+      "Stagehands changed the set during the brief intermission.",
+      "The lead actress forgot her line during opening night.",
+      "Applause thundered through the theater at the finale.",
+      "The playwright revised the script after the first read-through.",
+      "Spotlights illuminated the soloist during the closing number."
+    ],
+    "negative": [
+      "The engineers tested the prototype for three hours straight.",
+      "A silence fell over the lab as the results loaded.",
+      "The foreman positioned the crew near the loading dock.",
+      "Technicians replaced the parts during the brief shutdown.",
+      "The lead developer forgot a semicolon during the demo.",
+      "Applause thundered through the conference at the announcement.",
+      "The architect revised the blueprint after the first review.",
+      "Floodlights illuminated the site during the night shift."
+    ],
+    "readout_tokens": [
+      " theater",
+      " stage"
+    ]
+  },
+  {
+    "name": "dance",
+    "positive": [
+      "The ballerina practiced her pirouettes at the barre.",
+      "Couples spun across the floor to the waltz.",
+      "The choreographer adjusted the routine's final formation.",
+      "Her footwork was crisp during the tango competition.",
+      "The troupe rehearsed the ensemble number for weeks.",
+      "A single spotlight followed the soloist across the stage.",
+      "The instructor counted the beats for the beginner class.",
+      "Sweat dripped from the dancers after the intense rehearsal."
+    ],
+    "negative": [
+      "The mechanic practiced the diagnostic routine at the bench.",
+      "Cars merged across the lanes during the morning commute.",
+      "The supervisor adjusted the shift's final assignment.",
+      "His technique was precise during the welding competition.",
+      "The crew rehearsed the safety drill for weeks.",
+      "A single inspector followed the shipment across the warehouse.",
+      "The trainer counted the reps for the beginner group.",
+      "Oil dripped from the engine after the intense test."
+    ],
+    "readout_tokens": [
+      " dance",
+      " dancer"
+    ]
+  },
+  {
+    "name": "entomology",
+    "positive": [
+      "The entomologist collected beetles from the forest floor.",
+      "A colony of ants marched in a steady line toward the nest.",
+      "The butterfly emerged slowly from its chrysalis.",
+      "Researchers tagged the bees to track their foraging range.",
+      "The praying mantis remained motionless before striking.",
+      "Termites had hollowed out the fallen log completely.",
+      "The specimen was pinned and labeled for the collection.",
+      "Cicadas emerged in large numbers after seventeen years underground."
+    ],
+    "negative": [
+      "The geologist collected samples from the canyon floor.",
+      "A convoy of trucks moved in a steady line toward the depot.",
+      "The rocket lifted slowly from its launch pad.",
+      "Researchers tagged the whales to track their migration range.",
+      "The sniper remained motionless before firing.",
+      "Rust had corroded the abandoned ship completely.",
+      "The artifact was cleaned and labeled for the exhibit.",
+      "Tourists arrived in large numbers after the festival opened."
+    ],
+    "readout_tokens": [
+      " insect",
+      " beetle"
+    ]
+  },
+  {
+    "name": "firefighting",
+    "positive": [
+      "The firefighters battled the blaze for six hours straight.",
+      "Smoke poured from the third-floor window of the building.",
+      "A ladder truck extended toward the trapped residents.",
+      "The captain ordered the crew to ventilate the roof.",
+      "Hoses sprayed water onto the collapsing structure.",
+      "The alarm sounded twice before the crew suited up.",
+      "Firefighters searched room by room for survivors.",
+      "The blaze was finally contained after midnight."
+    ],
+    "negative": [
+      "The surgeons operated on the patient for six hours straight.",
+      "Steam poured from the pipe on the factory floor.",
+      "A crane extended toward the stranded workers.",
+      "The foreman ordered the crew to reinforce the beam.",
+      "Paint sprayed onto the newly built structure.",
+      "The bell rang twice before the shift changed.",
+      "Inspectors searched section by section for defects.",
+      "The leak was finally sealed after midnight."
+    ],
+    "readout_tokens": [
+      " fire",
+      " firefighter"
+    ]
+  },
+  {
+    "name": "insurance",
+    "positive": [
+      "The adjuster assessed the damage after the accident.",
+      "Her premium increased following the claim last year.",
+      "The policy covered water damage but not flooding.",
+      "He filed a claim after the storm damaged the roof.",
+      "The underwriter reviewed the applicant's medical history.",
+      "A deductible applied before the coverage kicked in.",
+      "The insurer denied the claim citing a policy exclusion.",
+      "Actuaries calculated the risk based on regional data."
+    ],
+    "negative": [
+      "The referee assessed the foul after the collision.",
+      "His ranking increased following the tournament last year.",
+      "The rulebook covered timeouts but not injury delays.",
+      "He filed a protest after the call favored the opponent.",
+      "The scout reviewed the recruit's performance history.",
+      "A cooldown applied before the next round began.",
+      "The league denied the appeal citing a rule violation.",
+      "Analysts calculated the odds based on historical data."
+    ],
+    "readout_tokens": [
+      " insurance",
+      " claim"
+    ]
+  },
+  {
+    "name": "carpentry",
+    "positive": [
+      "The carpenter measured the plank twice before cutting.",
+      "Sawdust covered the workshop floor by the end of the day.",
+      "He sanded the tabletop until it was perfectly smooth.",
+      "Dovetail joints held the drawer together without nails.",
+      "The chisel carved a groove into the oak beam.",
+      "A level ensured the shelf was perfectly straight.",
+      "Wood glue set overnight before the clamps were removed.",
+      "The workbench was cluttered with hand tools and shavings."
+    ],
+    "negative": [
+      "The tailor measured the fabric twice before cutting.",
+      "Fabric scraps covered the studio floor by the end of the day.",
+      "He pressed the shirt until it was perfectly smooth.",
+      "Hidden stitches held the seam together without visible thread.",
+      "The needle traced a pattern onto the silk panel.",
+      "A ruler ensured the hem was perfectly straight.",
+      "Starch set overnight before the pins were removed.",
+      "The sewing table was cluttered with spools and scraps."
+    ],
+    "readout_tokens": [
+      " wood",
+      " workshop"
+    ]
+  },
+  {
+    "name": "plumbing",
+    "positive": [
+      "The plumber replaced the corroded pipe under the sink.",
+      "Water pressure dropped suddenly throughout the house.",
+      "He tightened the fitting to stop the persistent leak.",
+      "The drain was clogged with years of accumulated grease.",
+      "A wrench loosened the stubborn valve at last.",
+      "The water heater needed a new thermostat installed.",
+      "Pipes froze and burst during the harsh winter storm.",
+      "The technician snaked the line to clear the blockage."
+    ],
+    "negative": [
+      "The electrician replaced the faulty switch behind the wall.",
+      "Signal strength dropped suddenly throughout the building.",
+      "He tightened the connector to stop the persistent static.",
+      "The circuit was overloaded with years of added appliances.",
+      "A screwdriver loosened the stubborn panel at last.",
+      "The router needed a new firmware update installed.",
+      "Wires frayed and sparked during the harsh storm outage.",
+      "The technician traced the line to clear the short circuit."
+    ],
+    "readout_tokens": [
+      " pipe",
+      " leak"
+    ]
+  },
+  {
+    "name": "board_games",
+    "positive": [
+      "She rolled the dice and moved her piece six spaces.",
+      "The players negotiated a trade for the last property.",
+      "He drew a card that sent him straight to jail.",
+      "The board was set up with pieces on opposite sides.",
+      "A well-timed bluff won her the round of poker.",
+      "The strategy game lasted nearly four hours.",
+      "He captured the opponent's king with a final move.",
+      "Dice clattered across the table during the tense round."
+    ],
+    "negative": [
+      "She calculated the risk and invested six percent more.",
+      "The diplomats negotiated a treaty for the disputed border.",
+      "He received a notice that sent him straight to court.",
+      "The office was set up with desks on opposite sides.",
+      "A well-timed offer won her the contract negotiation.",
+      "The merger process lasted nearly four months.",
+      "He secured the opponent's shares with a final bid.",
+      "Papers shuffled across the table during the tense meeting."
+    ],
+    "readout_tokens": [
+      " dice",
+      " board"
+    ]
+  },
+  {
+    "name": "martial_arts",
+    "positive": [
+      "The student bowed before stepping onto the mat.",
+      "He practiced the kata until the movements felt natural.",
+      "A well-executed throw ended the sparring match quickly.",
+      "The instructor corrected her stance during the drill.",
+      "Black belts demonstrated advanced techniques at the seminar.",
+      "The fighter blocked the strike and countered instantly.",
+      "Years of discipline shaped his calm and steady focus.",
+      "The dojo echoed with the sound of synchronized kicks."
+    ],
+    "negative": [
+      "The employee nodded before stepping into the meeting.",
+      "He rehearsed the pitch until the delivery felt natural.",
+      "A well-timed joke ended the tense negotiation quickly.",
+      "The coach corrected her posture during the presentation.",
+      "Senior partners demonstrated advanced strategies at the workshop.",
+      "The debater rebutted the point and countered instantly.",
+      "Years of practice shaped his calm and steady delivery.",
+      "The office buzzed with the sound of ringing phones."
+    ],
+    "readout_tokens": [
+      " martial",
+      " fighter"
+    ]
+  },
+  {
+    "name": "birdwatching",
+    "positive": [
+      "She spotted a rare warbler through her binoculars.",
+      "The flock migrated south as the weather turned cold.",
+      "He logged the sighting in his weathered field journal.",
+      "A heron waded slowly through the marsh at dawn.",
+      "Birdsong filled the forest as the sun rose.",
+      "The nest was tucked high in the old oak tree.",
+      "She identified the species by its distinctive call.",
+      "Binoculars revealed the hawk circling above the valley."
+    ],
+    "negative": [
+      "She spotted a rare comet through her telescope.",
+      "The satellite orbited south as the season changed.",
+      "He logged the reading in his weathered lab journal.",
+      "A rover moved slowly through the crater at dawn.",
+      "Static filled the radio as the storm approached.",
+      "The probe was tucked high in the orbital station.",
+      "She identified the star by its distinctive spectrum.",
+      "The telescope revealed the comet passing above the horizon."
+    ],
+    "readout_tokens": [
+      " bird"
+    ]
+  },
+  {
+    "name": "mountaineering",
+    "positive": [
+      "The climbers roped together before the final ascent.",
+      "Altitude sickness forced the team to descend early.",
+      "She hammered a piton into the icy rock face.",
+      "The summit was obscured by thick, rolling clouds.",
+      "Crampons gripped the ice as they crossed the glacier.",
+      "The base camp was pitched at fourteen thousand feet.",
+      "A sudden storm forced the expedition to shelter overnight.",
+      "He reached the peak just as the sun broke through."
+    ],
+    "negative": [
+      "The divers tethered together before the final descent.",
+      "Decompression sickness forced the team to surface early.",
+      "She wedged a hook into the coral reef wall.",
+      "The wreck was obscured by thick, drifting sediment.",
+      "Fins propelled them as they crossed the trench.",
+      "The dive boat was anchored at forty meters depth.",
+      "A sudden current forced the expedition to abort the dive.",
+      "He reached the wreck just as the light broke through."
+    ],
+    "readout_tokens": [
+      " mountain",
+      " summit"
+    ]
+  },
+  {
+    "name": "epidemiology",
+    "positive": [
+      "The epidemiologist traced the outbreak to a single source.",
+      "Case counts rose sharply over the following two weeks.",
+      "Researchers modeled the disease's transmission rate.",
+      "Contact tracing identified dozens of exposed individuals.",
+      "The vaccine trial entered its third phase last month.",
+      "A quarantine was imposed on the affected neighborhood.",
+      "The pathogen spread faster than initial models predicted.",
+      "Public health officials issued new containment guidelines."
+    ],
+    "negative": [
+      "The detective traced the theft to a single suspect.",
+      "Sales figures rose sharply over the following two weeks.",
+      "Analysts modeled the market's growth rate.",
+      "Background checks identified dozens of qualified candidates.",
+      "The product launch entered its third phase last month.",
+      "A recall was issued on the defective batch.",
+      "The rumor spread faster than the company predicted.",
+      "Corporate officials issued new compliance guidelines."
+    ],
+    "readout_tokens": [
+      " outbreak",
+      " epidemic"
+    ]
+  },
+  {
+    "name": "cryptography",
+    "positive": [
+      "The analyst decrypted the message using the recovered key.",
+      "A hash function converted the input into a fixed digest.",
+      "The algorithm encrypted the data before transmission.",
+      "Researchers found a flaw in the outdated cipher.",
+      "The private key remained hidden throughout the exchange.",
+      "A digital signature verified the document's authenticity.",
+      "The protocol relied on prime factorization for security.",
+      "Brute-force attacks failed against the strong encryption."
+    ],
+    "negative": [
+      "The translator rendered the text using the recovered manuscript.",
+      "A summary function converted the report into a short brief.",
+      "The courier delivered the package before the deadline.",
+      "Researchers found a flaw in the outdated map.",
+      "The treasure remained hidden throughout the voyage.",
+      "A wax seal verified the letter's authenticity.",
+      "The recipe relied on precise measurements for success.",
+      "Rough seas failed to stop the determined sailors."
+    ],
+    "readout_tokens": [
+      " encryption",
+      " cipher"
+    ]
+  },
+  {
+    "name": "astronomy",
+    "positive": [
+      "The astronomer pointed the telescope toward the nebula.",
+      "A supernova was observed in a distant galaxy.",
+      "The observatory recorded data through the clear night sky.",
+      "Light from the star took years to reach Earth.",
+      "The eclipse cast a shadow across the northern hemisphere.",
+      "Astronomers debated the age of the newly discovered cluster.",
+      "The comet's tail stretched millions of kilometers behind it.",
+      "A new moon was detected orbiting the distant planet."
+    ],
+    "negative": [
+      "The historian pointed the magnifying glass toward the manuscript.",
+      "A rare artifact was found in a distant province.",
+      "The archive recorded transactions through the entire century.",
+      "News from the capital took weeks to reach the village.",
+      "The parade marched across the northern district.",
+      "Scholars debated the origin of the newly discovered scroll.",
+      "The caravan's route stretched hundreds of kilometers across the desert.",
+      "A new settlement was established near the distant river."
+    ],
+    "readout_tokens": [
+      " astronomer",
+      " telescope"
+    ]
+  },
+  {
+    "name": "paleontology",
+    "positive": [
+      "The paleontologist unearthed a fossilized femur bone.",
+      "Layers of sediment preserved the ancient footprints perfectly.",
+      "The dig site yielded three new species of trilobite.",
+      "Scientists reconstructed the skeleton from scattered fragments.",
+      "The amber trapped an insect millions of years ago.",
+      "Erosion exposed a rich fossil bed along the cliff.",
+      "The skull's shape suggested a previously unknown predator.",
+      "Carbon dating placed the remains at ten thousand years old."
+    ],
+    "negative": [
+      "The mechanic replaced a corroded engine bolt.",
+      "Layers of paint preserved the original mural perfectly.",
+      "The auction yielded three rare pieces of pottery.",
+      "Engineers reconstructed the bridge from salvaged materials.",
+      "The vault held a fortune untouched for decades.",
+      "Renovation exposed a hidden room behind the wall.",
+      "The document's language suggested a previously unknown author.",
+      "Testing placed the sample at ten years old."
+    ],
+    "readout_tokens": [
+      " fossil",
+      " bone"
+    ]
+  },
+  {
+    "name": "beekeeping",
+    "positive": [
+      "The beekeeper inspected the hive for signs of disease.",
+      "Worker bees returned to the colony laden with pollen.",
+      "Smoke calmed the swarm before the frames were removed.",
+      "Honey dripped slowly from the freshly extracted comb.",
+      "The queen bee was marked with a small dot of paint.",
+      "A new hive box was added as the colony grew.",
+      "Bees communicated the location of flowers through a dance.",
+      "Winter losses forced the apiary to rebuild several colonies."
+    ],
+    "negative": [
+      "The technician inspected the server for signs of failure.",
+      "Delivery trucks returned to the warehouse laden with packages.",
+      "A password protected the account before the files were accessed.",
+      "Data streamed slowly from the freshly restored backup.",
+      "The admin account was marked with elevated permissions.",
+      "A new server rack was added as the traffic grew.",
+      "Devices communicated their location through the network.",
+      "Outages forced the company to rebuild several systems."
+    ],
+    "readout_tokens": [
+      " bee",
+      " honey"
+    ]
+  },
+  {
+    "name": "viticulture",
+    "positive": [
+      "The vintner inspected the grapes before the harvest began.",
+      "Frost threatened the vineyard during the early spring.",
+      "Oak barrels aged the wine in the cool cellar.",
+      "Workers hand-picked the clusters along the hillside rows.",
+      "The soil's minerality shaped the wine's distinctive flavor.",
+      "A late harvest concentrated the sugars in the grapes.",
+      "The sommelier noted hints of oak and dark fruit.",
+      "Pruning shaped the vines for the coming growing season."
+    ],
+    "negative": [
+      "The foreman inspected the beams before the construction began.",
+      "Rain threatened the site during the early spring.",
+      "Steel frames supported the structure in the open lot.",
+      "Workers hand-laid the bricks along the foundation rows.",
+      "The soil's composition shaped the building's foundation design.",
+      "A late shipment delayed the completion of the project.",
+      "The inspector noted signs of wear and minor cracks.",
+      "Scaffolding shaped the site for the coming construction phase."
+    ],
+    "readout_tokens": [
+      " wine",
+      " grape"
+    ]
+  },
+  {
+    "name": "locksmithing",
+    "positive": [
+      "The locksmith picked the tumbler with a slender tool.",
+      "A new deadbolt was installed on the front door.",
+      "Keys were cut to match the worn original.",
+      "The safe's combination was reset after the break-in.",
+      "Pins clicked into place as the key turned.",
+      "A master key opened every door in the building.",
+      "The technician rekeyed the lock for the new tenant.",
+      "Broken springs jammed the mechanism inside the lock."
+    ],
+    "negative": [
+      "The dentist examined the molar with a slender tool.",
+      "A new filling was placed in the back tooth.",
+      "Braces were fitted to correct the crooked smile.",
+      "The patient's chart was updated after the checkup.",
+      "Nerves reacted as the drill made contact.",
+      "A single treatment resolved every symptom in the patient.",
+      "The hygienist cleaned the teeth for the new patient.",
+      "Cavities weakened the enamel inside the tooth."
+    ],
+    "readout_tokens": [
+      " key",
+      " lock"
+    ]
+  },
+  {
+    "name": "welding",
+    "positive": [
+      "The welder struck an arc across the steel plates.",
+      "Sparks flew as the torch fused the metal seam.",
+      "A protective mask shielded his eyes from the glare.",
+      "The joint cooled slowly after the weld was finished.",
+      "Molten metal pooled along the edge of the bead.",
+      "The inspector checked the weld for hidden cracks.",
+      "Argon gas shielded the weld from oxidation.",
+      "Heat warped the thin sheet during the final pass."
+    ],
+    "negative": [
+      "The performer struck a pose across the empty stage.",
+      "Confetti flew as the crowd cheered the final act.",
+      "A wide brim shielded her eyes from the sun.",
+      "The audience settled slowly after the show was finished.",
+      "Applause echoed along the length of the theater.",
+      "The critic checked the review for factual errors.",
+      "Curtains shielded the actors from the waiting crowd.",
+      "Nerves affected the singer during the final note."
+    ],
+    "readout_tokens": [
+      " weld",
+      " torch"
+    ]
+  },
+  {
+    "name": "upholstery",
+    "positive": [
+      "The upholsterer stretched fabric tightly over the frame.",
+      "Foam padding was replaced beneath the worn cushion.",
+      "A staple gun secured the material along the edges.",
+      "The old springs creaked with every shift in weight.",
+      "New fabric transformed the tired armchair completely.",
+      "Piping was sewn along the seams for a finished look.",
+      "The client chose velvet for the antique sofa.",
+      "Horsehair stuffing gave the seat its firm shape."
+    ],
+    "negative": [
+      "The gardener stretched netting tightly over the frame.",
+      "Soil was replaced beneath the wilted flowerbed.",
+      "A hose delivered water along the rows of vegetables.",
+      "The old fence creaked with every gust of wind.",
+      "New mulch transformed the tired garden completely.",
+      "Stones were placed along the path for a finished look.",
+      "The client chose roses for the front entrance.",
+      "Compost gave the soil its rich texture."
+    ],
+    "readout_tokens": [
+      " fabric",
+      " foam"
+    ]
+  },
+  {
+    "name": "calligraphy",
+    "positive": [
+      "The calligrapher dipped the nib into black ink.",
+      "Each stroke flowed smoothly across the parchment.",
+      "A steady hand shaped the elegant looping letters.",
+      "The pen's angle determined the thickness of the line.",
+      "Gold leaf accented the ornate capital letters.",
+      "Practice sheets filled with repeated looping curves.",
+      "The invitation was addressed in flowing cursive script.",
+      "Ink pooled slightly at the end of each stroke."
+    ],
+    "negative": [
+      "The surgeon dipped the instrument into sterile solution.",
+      "Each incision flowed smoothly across the tissue.",
+      "A steady hand guided the delicate surgical needle.",
+      "The scalpel's angle determined the depth of the cut.",
+      "Sutures closed the wound along the incision line.",
+      "Practice sessions filled with repeated suturing drills.",
+      "The chart was updated after the successful operation.",
+      "Blood pooled slightly at the site of the incision."
+    ],
+    "readout_tokens": [
+      " ink",
+      " pen"
+    ]
+  },
+  {
+    "name": "origami",
+    "positive": [
+      "She folded the paper crane with practiced precision.",
+      "Each crease was pressed flat along a straight edge.",
+      "The model transformed from a flat square into a bird.",
+      "Wet-folding gave the sculpture soft, rounded curves.",
+      "A single sheet formed the entire complex figure.",
+      "The instructor demonstrated the fold in slow steps.",
+      "Diagonal creases divided the paper into triangular sections.",
+      "The finished dragon stood nearly a foot tall."
+    ],
+    "negative": [
+      "She wired the circuit board with practiced precision.",
+      "Each connection was soldered along a straight trace.",
+      "The device transformed from raw components into a working radio.",
+      "Careful testing gave the prototype stable, reliable output.",
+      "A single chip powered the entire complex system.",
+      "The instructor demonstrated the process in slow steps.",
+      "Copper traces divided the board into functional sections.",
+      "The finished robot stood nearly a foot tall."
+    ],
+    "readout_tokens": [
+      " paper",
+      " fold"
+    ]
+  },
+  {
+    "name": "chess",
+    "positive": [
+      "She opened with a classic pawn advance.",
+      "The grandmaster sacrificed his knight for position.",
+      "Checkmate came after a long endgame battle.",
+      "He castled early to protect his king.",
+      "The bishop controlled the long diagonal completely.",
+      "A stalemate ended the tense final round.",
+      "Her rook infiltrated the opponent's back rank.",
+      "The clock ticked down during the tournament's final move."
+    ],
+    "negative": [
+      "She opened with a classic opening argument.",
+      "The lawyer sacrificed a minor point for credibility.",
+      "A settlement came after a long negotiation battle.",
+      "He filed early to protect his client's rights.",
+      "The witness controlled the courtroom completely.",
+      "A hung jury ended the tense final trial.",
+      "Her evidence infiltrated the opponent's entire case.",
+      "The clock ticked down during the trial's final hour."
+    ],
+    "readout_tokens": [
+      " chess",
+      " king"
+    ]
+  },
+  {
+    "name": "archery",
+    "positive": [
+      "The archer drew the bowstring back to her cheek.",
+      "An arrow whistled through the air toward the target.",
+      "Fletching stabilized the shaft during its flight.",
+      "The bullseye was struck dead center from fifty meters.",
+      "Wind adjustments shifted her aim slightly left.",
+      "The bow's tension was calibrated before the competition.",
+      "A quiver held a dozen arrows at her side.",
+      "Her form remained steady through the release."
+    ],
+    "negative": [
+      "The pitcher wound up before the crucial delivery.",
+      "A fastball whistled through the air toward the plate.",
+      "Spin stabilized the ball during its flight.",
+      "The strike zone was hit dead center from the mound.",
+      "Wind adjustments shifted his throw slightly left.",
+      "The grip's pressure was calibrated before the game.",
+      "A bullpen held a dozen relievers at the ready.",
+      "His form remained steady through the delivery."
+    ],
+    "readout_tokens": [
+      " bow",
+      " arrow"
+    ]
+  },
+  {
+    "name": "fencing",
+    "positive": [
+      "The fencer lunged forward with a swift thrust.",
+      "Steel blades clashed in a rapid exchange.",
+      "A touch was scored on the opponent's chest plate.",
+      "The referee signaled a point after the parry.",
+      "Footwork determined the outcome of the bout.",
+      "Her mask fogged slightly during the intense match.",
+      "The epee bent slightly upon contact with the target.",
+      "A feint drew the opponent's guard out of position."
+    ],
+    "negative": [
+      "The negotiator leaned forward with a swift counteroffer.",
+      "Sharp words clashed in a rapid exchange.",
+      "A concession was won on the final clause.",
+      "The mediator signaled a break after the tense moment.",
+      "Preparation determined the outcome of the meeting.",
+      "Her notes filled quickly during the intense session.",
+      "The contract shifted slightly upon final review.",
+      "A bluff drew the opponent's strategy out of position."
+    ],
+    "readout_tokens": [
+      " sword",
+      " blade"
+    ]
+  },
+  {
+    "name": "cycling",
+    "positive": [
+      "The cyclist shifted gears before the steep climb.",
+      "Riders drafted closely behind the leading pack.",
+      "A flat tire forced an unscheduled pit stop.",
+      "The peloton stretched thin along the mountain road.",
+      "Her cadence stayed steady through the final sprint.",
+      "The chain slipped briefly during the tight turn.",
+      "Aerodynamic wheels shaved seconds off her lap time.",
+      "The finish line came into view after the descent."
+    ],
+    "negative": [
+      "The pilot adjusted throttle before the steep ascent.",
+      "Planes queued closely behind the leading aircraft.",
+      "A mechanical issue forced an unscheduled landing.",
+      "The formation stretched thin along the flight path.",
+      "Her altitude stayed steady through the final approach.",
+      "The engine sputtered briefly during the tight maneuver.",
+      "Lightweight materials shaved seconds off her flight time.",
+      "The runway came into view after the descent."
+    ],
+    "readout_tokens": [
+      " cyclist",
+      " bicycle"
+    ]
+  },
+  {
+    "name": "skiing",
+    "positive": [
+      "The skier carved sharp turns down the steep slope.",
+      "Fresh powder muffled the sound of her descent.",
+      "A chairlift carried riders to the mountain's summit.",
+      "Poles planted rhythmically with each turn.",
+      "The gate markers guided racers down the course.",
+      "Ice patches made the trail treacherous near the base.",
+      "Goggles protected his eyes from the blowing snow.",
+      "The lodge offered warmth after a long day."
+    ],
+    "negative": [
+      "The swimmer carved sharp turns through the open water.",
+      "Waves muffled the sound of her strokes.",
+      "A current carried swimmers toward the distant buoy.",
+      "Kicks landed rhythmically with each stroke.",
+      "The lane markers guided racers down the pool.",
+      "Choppy water made the crossing treacherous near the shore.",
+      "Goggles protected her eyes from the salt water.",
+      "The boat offered rest after a long swim."
+    ],
+    "readout_tokens": [
+      " ski",
+      " snow"
+    ]
+  },
+  {
+    "name": "surfing",
+    "positive": [
+      "The surfer paddled out beyond the breaking waves.",
+      "A perfect swell rolled in from the open ocean.",
+      "She popped up smoothly onto the moving board.",
+      "The wave's face curled into a hollow barrel.",
+      "Wax kept his feet gripped to the deck.",
+      "The reef break drew surfers from around the world.",
+      "A wipeout sent him tumbling beneath the surface.",
+      "Sunset painted the horizon as the tide shifted."
+    ],
+    "negative": [
+      "The climber hiked out beyond the tree line.",
+      "A steep ridge rolled in from the distant peak.",
+      "She stepped up smoothly onto the narrow ledge.",
+      "The rock's face curled into a hollow overhang.",
+      "Chalk kept his hands gripped to the hold.",
+      "The granite wall drew climbers from around the world.",
+      "A slip sent him swinging beneath the anchor.",
+      "Sunset painted the sky as the temperature dropped."
+    ],
+    "readout_tokens": [
+      " surf",
+      " wave"
+    ]
+  },
+  {
+    "name": "scuba_diving",
+    "positive": [
+      "The diver checked his regulator before descending.",
+      "Bubbles trailed upward as she explored the reef.",
+      "A school of fish scattered near the coral wall.",
+      "His tank gauge showed dwindling air pressure.",
+      "The wreck rested silently on the ocean floor.",
+      "Neutral buoyancy let her hover above the sand.",
+      "A flashlight cut through the darkness of the cave.",
+      "Decompression stops slowed their ascent to the surface."
+    ],
+    "negative": [
+      "The technician checked his readings before descending.",
+      "Cables trailed upward as she explored the shaft.",
+      "A crew of workers gathered near the mine wall.",
+      "His meter showed dwindling battery power.",
+      "The equipment rested silently on the tunnel floor.",
+      "Careful balance let her stand above the ledge.",
+      "A headlamp cut through the darkness of the mine.",
+      "Safety checks slowed their return to the surface."
+    ],
+    "readout_tokens": [
+      " dive",
+      " diver"
+    ]
+  },
+  {
+    "name": "sailing",
+    "positive": [
+      "The sailor trimmed the mainsail to catch the wind.",
+      "Waves slapped against the hull as they tacked.",
+      "The captain plotted a course across the open water.",
+      "Rigging creaked under the strain of the gusts.",
+      "A sudden squall forced them to reef the sails.",
+      "The keel steadied the boat against the swells.",
+      "Navigation lights blinked as dusk settled in.",
+      "The crew hoisted the spinnaker for the downwind run."
+    ],
+    "negative": [
+      "The driver adjusted the throttle to match the terrain.",
+      "Gravel crunched against the tires as they turned.",
+      "The navigator plotted a route across the open desert.",
+      "Suspension creaked under the strain of the bumps.",
+      "A sudden storm forced them to slow the convoy.",
+      "The frame steadied the truck against the ruts.",
+      "Headlights flickered as dusk settled in.",
+      "The team unloaded the supplies for the overnight camp."
+    ],
+    "readout_tokens": [
+      " sail",
+      " sailor"
+    ]
+  },
+  {
+    "name": "blacksmithing",
+    "positive": [
+      "The blacksmith heated the iron until it glowed orange.",
+      "Hammer blows shaped the metal against the anvil.",
+      "Sparks scattered with each strike of the forge.",
+      "The bellows fed oxygen into the roaring fire.",
+      "Quenching hardened the blade in a hiss of steam.",
+      "A pair of tongs held the glowing metal steady.",
+      "The horseshoe took shape under repeated blows.",
+      "Soot coated the walls of the small workshop."
+    ],
+    "negative": [
+      "The baker heated the oven until it reached temperature.",
+      "Kneading shaped the dough against the counter.",
+      "Flour scattered with each fold of the mixture.",
+      "The mixer fed air into the rising batter.",
+      "Cooling hardened the crust in a burst of steam.",
+      "A pair of tongs held the hot loaf steady.",
+      "The pastry took shape under repeated folds.",
+      "Flour coated the walls of the small bakery."
+    ],
+    "readout_tokens": [
+      " iron",
+      " forge"
+    ]
+  },
+  {
+    "name": "watchmaking",
+    "positive": [
+      "The watchmaker assembled tiny gears under a loupe.",
+      "Springs coiled precisely within the delicate movement.",
+      "A jeweler's screwdriver tightened the smallest screws.",
+      "The balance wheel ticked steadily inside the case.",
+      "Polished sapphire crystal protected the watch face.",
+      "Each component was cleaned in a solvent bath.",
+      "The mainspring stored energy for days of operation.",
+      "A steady hand placed the hairspring into position."
+    ],
+    "negative": [
+      "The florist assembled tiny blossoms under bright light.",
+      "Stems curved precisely within the delicate arrangement.",
+      "A pair of shears trimmed the smallest leaves.",
+      "The bouquet sat steadily inside the display case.",
+      "Fresh water preserved the flowers' vibrant color.",
+      "Each stem was cleaned in a water bath.",
+      "The vase stored moisture for days of freshness.",
+      "A steady hand placed the ribbon into position."
+    ],
+    "readout_tokens": [
+      " watch",
+      " clock"
+    ]
+  },
+  {
+    "name": "glassblowing",
+    "positive": [
+      "The glassblower gathered molten glass on the blowpipe.",
+      "A furnace glowed at nearly two thousand degrees.",
+      "He rotated the pipe to keep the glass centered.",
+      "Breath expanded the glowing bubble into a vase.",
+      "Tools shaped the soft glass before it cooled.",
+      "Color was added by rolling the piece in powder.",
+      "The annealing oven cooled the glass slowly overnight.",
+      "A punty rod held the piece during the final shaping."
+    ],
+    "negative": [
+      "The potter gathered wet clay on the wheel.",
+      "A kiln glowed at nearly two thousand degrees.",
+      "He rotated the wheel to keep the clay centered.",
+      "Pressure expanded the spinning lump into a bowl.",
+      "Tools shaped the soft clay before it dried.",
+      "Glaze was added by dipping the piece in liquid.",
+      "The kiln fired the pottery slowly overnight.",
+      "A wire tool trimmed the piece during the final shaping."
+    ],
+    "readout_tokens": [
+      " glass",
+      " blow"
+    ]
+  },
+  {
+    "name": "pottery",
+    "positive": [
+      "The potter centered the clay on the spinning wheel.",
+      "Her fingers pulled the walls upward into a vase.",
+      "The kiln fired the bisqueware overnight at high heat.",
+      "Glaze dripped in streaks down the finished bowl.",
+      "A wire cut the pot free from the wheel head.",
+      "Air bubbles trapped in the clay caused it to crack.",
+      "The handle was attached with a slip of wet clay.",
+      "Trimming removed excess clay from the base."
+    ],
+    "negative": [
+      "The tailor centered the fabric on the cutting table.",
+      "Her fingers pulled the seam upward into a hem.",
+      "The steamer pressed the garment overnight at high heat.",
+      "Thread dripped in loops down the finished jacket.",
+      "Scissors cut the fabric free from the pattern.",
+      "Loose threads trapped in the seam caused it to fray.",
+      "The button was attached with a length of thread.",
+      "Trimming removed excess fabric from the hem."
+    ],
+    "readout_tokens": [
+      " clay",
+      " wheel"
+    ]
+  },
+  {
+    "name": "papermaking",
+    "positive": [
+      "The papermaker dipped the mold into the pulp vat.",
+      "Fibers settled evenly across the fine mesh screen.",
+      "Pressing squeezed excess water from the wet sheet.",
+      "The sheet dried slowly on a felt blanket.",
+      "Recycled fibers gave the paper a coarse texture.",
+      "A deckle framed the edges of each sheet.",
+      "Sunlight bleached the pulp to a lighter shade.",
+      "The finished sheets were stacked and trimmed evenly."
+    ],
+    "negative": [
+      "The brewer dipped the paddle into the mash tun.",
+      "Grains settled evenly across the fine mesh filter.",
+      "Boiling squeezed excess bitterness from the wort.",
+      "The beer fermented slowly in a steel tank.",
+      "Local hops gave the beer a distinct flavor.",
+      "A thermometer tracked the temperature of each batch.",
+      "Yeast converted the sugar to a lighter alcohol.",
+      "The finished bottles were capped and labeled evenly."
+    ],
+    "readout_tokens": [
+      " paper",
+      " pulp"
+    ]
+  },
+  {
+    "name": "bookbinding",
+    "positive": [
+      "The bookbinder stitched the signatures together by hand.",
+      "Glue secured the spine along the folded pages.",
+      "Leather stretched tightly over the wooden boards.",
+      "A bone folder pressed sharp creases into the paper.",
+      "Gold foil stamped the title onto the cover.",
+      "Thread looped through each gathering of pages.",
+      "The finished book opened flat without cracking.",
+      "Endpapers were pasted neatly to the inside covers."
+    ],
+    "negative": [
+      "The tailor stitched the panels together by hand.",
+      "Glue secured the lining along the folded fabric.",
+      "Leather stretched tightly over the wooden last.",
+      "A steel awl pressed sharp holes into the sole.",
+      "Gold thread stamped the pattern onto the vest.",
+      "Lace looped through each eyelet of the boot.",
+      "The finished shoe fit comfortably without pinching.",
+      "Insoles were placed neatly inside the shoes."
+    ],
+    "readout_tokens": [
+      " book",
+      " spine"
+    ]
+  },
+  {
+    "name": "weaving",
+    "positive": [
+      "The weaver threaded warp strands through the loom.",
+      "A shuttle carried the weft back and forth.",
+      "Colorful patterns emerged as the rows built up.",
+      "Tension in the threads kept the fabric even.",
+      "The reed beat each new row firmly into place.",
+      "Wool fibers were spun before being woven.",
+      "The finished tapestry depicted a mountain scene.",
+      "Heddles lifted alternating threads with each pass."
+    ],
+    "negative": [
+      "The programmer threaded functions through the codebase.",
+      "A script carried the data back and forth.",
+      "Bugs emerged as the features built up.",
+      "Consistency in the naming kept the code readable.",
+      "The linter flagged each new error firmly.",
+      "Modules were tested before being deployed.",
+      "The finished application handled a range of requests.",
+      "Middleware processed alternating requests with each call."
+    ],
+    "readout_tokens": [
+      " thread",
+      " fabric"
+    ]
+  },
+  {
+    "name": "tanning",
+    "positive": [
+      "The tanner soaked the hide in a lime solution.",
+      "Scraping removed hair and flesh from the skin.",
+      "Tannins bonded with the fibers over several weeks.",
+      "The leather was stretched and dried on racks.",
+      "Dye penetrated the hide to achieve a rich color.",
+      "Oils softened the finished leather considerably.",
+      "The workshop carried a strong, distinctive odor.",
+      "A finished hide was cut into usable panels."
+    ],
+    "negative": [
+      "The winemaker soaked the grapes in a steel tank.",
+      "Pressing removed skins and seeds from the juice.",
+      "Sugars converted to alcohol over several weeks.",
+      "The wine was filtered and stored in barrels.",
+      "Oak penetrated the wine to achieve a rich flavor.",
+      "Aging softened the finished wine considerably.",
+      "The cellar carried a strong, distinctive aroma.",
+      "A finished vintage was bottled into usable containers."
+    ],
+    "readout_tokens": [
+      " leather",
+      " hide"
+    ]
+  },
+  {
+    "name": "falconry",
+    "positive": [
+      "The falconer released the hawk from her gloved hand.",
+      "Bells on its legs tracked the bird's location.",
+      "The falcon dove sharply toward its prey below.",
+      "A hood kept the bird calm before the flight.",
+      "Jesses tethered the raptor to the falconer's glove.",
+      "The hawk returned to the lure after the hunt.",
+      "Training built trust between the bird and handler.",
+      "Feathers ruffled as the falcon settled on its perch."
+    ],
+    "negative": [
+      "The trainer released the dog from its leash.",
+      "A collar on its neck tracked the animal's location.",
+      "The retriever dashed sharply toward the thrown ball.",
+      "A crate kept the dog calm before the show.",
+      "A harness tethered the animal to the trainer's hand.",
+      "The dog returned to its owner after the walk.",
+      "Training built trust between the animal and handler.",
+      "Fur ruffled as the dog settled on its bed."
+    ],
+    "readout_tokens": [
+      " hawk",
+      " bird"
+    ]
+  },
+  {
+    "name": "cheese_making",
+    "positive": [
+      "The cheesemaker added rennet to curdle the milk.",
+      "Curds separated slowly from the pale whey.",
+      "Salt was worked evenly into the pressed cheese.",
+      "Wheels aged for months in a cool cellar.",
+      "Mold cultures gave the rind its distinctive character.",
+      "The cheesemaker checked moisture levels throughout aging.",
+      "A wax coating sealed the wheel from the air.",
+      "Tasting revealed notes of nuttiness in the aged cheese."
+    ],
+    "negative": [
+      "The distiller added yeast to ferment the mash.",
+      "Alcohol separated slowly from the fermented liquid.",
+      "Char was worked evenly into the toasted barrel.",
+      "Barrels aged for years in a cool warehouse.",
+      "Wood cultures gave the spirit its distinctive character.",
+      "The distiller checked proof levels throughout aging.",
+      "A wax seal sealed the bottle from the air.",
+      "Tasting revealed notes of vanilla in the aged spirit."
+    ],
+    "readout_tokens": [
+      " cheese",
+      " milk"
+    ]
+  },
+  {
+    "name": "coffee_roasting",
+    "positive": [
+      "The roaster monitored bean color through the sight glass.",
+      "Beans cracked audibly as the temperature rose.",
+      "Chaff separated from the beans during cooling.",
+      "A dark roast developed deeper, smokier flavor notes.",
+      "The drum turned steadily to roast beans evenly.",
+      "Green beans arrived in burlap sacks from the farm.",
+      "Cupping revealed bright acidity in the light roast.",
+      "Oils rose to the surface of the darkly roasted beans."
+    ],
+    "negative": [
+      "The technician monitored engine temperature through the gauge.",
+      "Metal creaked audibly as the pressure rose.",
+      "Exhaust separated from the engine during cooldown.",
+      "A tuned engine developed deeper, throatier sound notes.",
+      "The turbine spun steadily to generate power evenly.",
+      "New parts arrived in crates from the factory.",
+      "Testing revealed strong torque in the modified engine.",
+      "Oil rose to the surface of the overheated engine."
+    ],
+    "readout_tokens": [
+      " coffee",
+      " bean"
+    ]
+  },
+  {
+    "name": "perfumery",
+    "positive": [
+      "The perfumer blended top notes of citrus and bergamot.",
+      "A single drop of essence transformed the entire mixture.",
+      "Musk anchored the fragrance's deep base notes.",
+      "The scent evolved over hours on warm skin.",
+      "Distillation extracted oils from delicate rose petals.",
+      "A perfumer's nose could distinguish hundreds of scents.",
+      "The formula was aged before bottling for sale.",
+      "Alcohol carried the fragrance's volatile top notes."
+    ],
+    "negative": [
+      "The chef blended flavors of citrus and herbs.",
+      "A single pinch of spice transformed the entire dish.",
+      "Stock anchored the sauce's deep savory notes.",
+      "The flavor evolved over hours of slow cooking.",
+      "Reduction extracted essence from delicate fresh herbs.",
+      "A chef's palate could distinguish hundreds of flavors.",
+      "The sauce was rested before serving to guests.",
+      "Fat carried the dish's rich underlying notes."
+    ],
+    "readout_tokens": [
+      " perfume",
+      " fragrance"
+    ]
+  },
+  {
+    "name": "soap_making",
+    "positive": [
+      "The soap maker mixed lye carefully with distilled water.",
+      "Oils saponified slowly into a thick, creamy batter.",
+      "Molds shaped the soap into uniform bars.",
+      "Essential oils scented the bars before they set.",
+      "A curing period hardened the soap over several weeks.",
+      "Swirls of color decorated the surface of each bar.",
+      "The batch was tested with a simple pH strip.",
+      "Glycerin gave the finished soap a moisturizing quality."
+    ],
+    "negative": [
+      "The candlemaker mixed wax carefully with fragrance oil.",
+      "Paraffin melted slowly into a thick, clear liquid.",
+      "Molds shaped the wax into uniform candles.",
+      "Dye chips colored the wax before it set.",
+      "A cooling period hardened the candle over several hours.",
+      "Layers of color decorated the surface of each candle.",
+      "The batch was tested with a simple burn test.",
+      "Wicks gave the finished candle a steady burning quality."
+    ],
+    "readout_tokens": [
+      " soap",
+      " wax"
+    ]
+  },
+  {
+    "name": "candle_making",
+    "positive": [
+      "The candlemaker poured melted wax into the mold.",
+      "A wick was centered before the wax cooled.",
+      "Fragrance oils were blended into the liquid wax.",
+      "The candle burned evenly once fully cured.",
+      "Layers of colored wax created a striped effect.",
+      "Soot formed if the wick was trimmed too long.",
+      "The wax pooled evenly around the steady flame.",
+      "Beeswax gave the candle a natural honey scent."
+    ],
+    "negative": [
+      "The blacksmith poured molten metal into the mold.",
+      "A core was centered before the metal cooled.",
+      "Alloys were blended into the liquid bronze.",
+      "The blade held its edge once fully hardened.",
+      "Layers of folded steel created a patterned effect.",
+      "Cracks formed if the metal was cooled too quickly.",
+      "The metal pooled evenly around the steady heat.",
+      "Iron gave the blade a natural gray finish."
+    ],
+    "readout_tokens": [
+      " candle",
+      " wax"
+    ]
+  },
+  {
+    "name": "taxidermy",
+    "positive": [
+      "The taxidermist carefully removed the animal's skin.",
+      "A foam mannequin formed the base of the mount.",
+      "Glass eyes were set into the finished specimen.",
+      "Preservative chemicals protected the hide from decay.",
+      "Wire armatures supported the pose of the mount.",
+      "The fur was groomed to look naturally alive.",
+      "Clay filled the eye sockets before the eyes were set.",
+      "The finished mount was displayed in a glass case."
+    ],
+    "negative": [
+      "The sculptor carefully carved the marble surface.",
+      "A wire frame formed the base of the statue.",
+      "Glass tiles were set into the finished mosaic.",
+      "Sealant chemicals protected the stone from weathering.",
+      "Steel armatures supported the pose of the statue.",
+      "The surface was polished to look naturally smooth.",
+      "Plaster filled the gaps before the tiles were set.",
+      "The finished statue was displayed in a public square."
+    ],
+    "readout_tokens": [
+      " animal",
+      " mount"
+    ]
+  },
+  {
+    "name": "cartography",
+    "positive": [
+      "The cartographer plotted coordinates onto the blank map.",
+      "Contour lines represented the terrain's changing elevation.",
+      "A legend explained the symbols used throughout the map.",
+      "Satellite imagery informed the accuracy of the coastline.",
+      "The scale bar allowed distances to be measured precisely.",
+      "Rivers were traced in blue across the printed sheet.",
+      "Projection distortions affected the size of distant landmasses.",
+      "The finished map was folded into a compact size."
+    ],
+    "negative": [
+      "The composer plotted notes onto the blank staff.",
+      "Dynamic markings represented the music's changing intensity.",
+      "A key explained the symbols used throughout the score.",
+      "Recorded performances informed the accuracy of the tempo.",
+      "The metronome allowed rhythm to be measured precisely.",
+      "Melodies were written in ink across the printed sheet.",
+      "Transposition changes affected the pitch of distant sections.",
+      "The finished score was bound into a compact booklet."
+    ],
+    "readout_tokens": [
+      " map",
+      " compass"
+    ]
+  },
+  {
+    "name": "surveying",
+    "positive": [
+      "The surveyor set up the theodolite at the property line.",
+      "Stakes marked the boundary corners of the parcel.",
+      "A total station measured angles with laser precision.",
+      "The crew recorded elevation changes across the site.",
+      "Benchmarks provided fixed reference points for measurements.",
+      "GPS coordinates confirmed the location of each corner.",
+      "The plat was drawn based on field measurements.",
+      "Vegetation was cleared to establish a clear sightline."
+    ],
+    "negative": [
+      "The auditor set up the spreadsheet at the year's start.",
+      "Notes marked the discrepancy corners of the ledger.",
+      "A calculator computed totals with careful precision.",
+      "The team recorded expense changes across the quarter.",
+      "Receipts provided fixed reference points for verification.",
+      "Bank statements confirmed the balance of each account.",
+      "The report was drawn based on financial records.",
+      "Errors were corrected to establish a clean summary."
+    ],
+    "readout_tokens": [
+      " survey",
+      " land"
+    ]
+  },
+  {
+    "name": "midwifery",
+    "positive": [
+      "The midwife monitored contractions throughout the labor.",
+      "A calm voice guided the mother through each stage.",
+      "The newborn was placed gently on the mother's chest.",
+      "Vital signs were checked every fifteen minutes.",
+      "Warm water eased the discomfort of early labor.",
+      "The midwife had attended hundreds of home births.",
+      "Breathing techniques helped manage the pain of contractions.",
+      "The umbilical cord was clamped shortly after delivery."
+    ],
+    "negative": [
+      "The coach monitored progress throughout the training camp.",
+      "A calm voice guided the team through each drill.",
+      "The trophy was placed gently on the winning team's table.",
+      "Statistics were checked every fifteen minutes.",
+      "Cold water eased the discomfort of the intense workout.",
+      "The coach had attended hundreds of championship games.",
+      "Breathing techniques helped manage the fatigue of the sprint.",
+      "The final whistle blew shortly after the winning goal."
+    ],
+    "readout_tokens": [
+      " birth",
+      " labor"
+    ]
+  }
+]

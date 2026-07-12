@@ -59,14 +59,14 @@ def _flatten_expected(
             out[key] = _Expected(float(v), default_rtol, default_atol)
         elif isinstance(v, dict):
             if "value" in v:
-                # Per-key override: {"value": <num>, "atol": ..., "rtol": ...}
+                
                 out[key] = _Expected(
                     float(v["value"]),
                     float(v.get("rtol", default_rtol)),
                     float(v.get("atol", default_atol)),
                 )
             else:
-                # Nested group — recurse.
+                
                 out.update(_flatten_expected(v, default_rtol, default_atol, key))
     return out
 

@@ -73,7 +73,6 @@ from sae_causal_audit.interfaces import FeatureProbe
 logger = logging.getLogger("audit_real_sae")
 
 
-# Environment / reproducibility metadata
 def _capture_environment() -> dict:
     """Library versions, GPU, and git commit, for reproducibility metadata."""
     env: dict = {
@@ -88,14 +87,20 @@ def _capture_environment() -> dict:
         pass
     try:
         import transformer_lens
-        env["transformer_lens_version"] = getattr(transformer_lens, "__version__", "unknown")
+        version = getattr(transformer_lens, "__version__", None)
+        if version is None:
+            from importlib.metadata import version as _pkg_version
+            version = _pkg_version("transformer_lens")
+        env["transformer_lens_version"] = version
     except ImportError:
         pass
+    except Exception:
+        env["transformer_lens_version"] = "unknown"
     if torch.cuda.is_available():
         try:
             env["gpu"] = torch.cuda.get_device_name(0)
             env["cuda_version"] = torch.version.cuda
-        except Exception:  # pragma: no cover - defensive, driver-dependent
+        except Exception:  
             pass
     try:
         commit = subprocess.run(
@@ -105,12 +110,12 @@ def _capture_environment() -> dict:
         )
         if commit.returncode == 0:
             env["git_commit"] = commit.stdout.strip()
-    except Exception:  # pragma: no cover - git may not be installed
+    except Exception:  
         pass
     return env
 
 
-# Concept schema validation (fails fast, before any GPU/model work)
+
 @dataclasses.dataclass(frozen=True, slots=True)
 class Concept:
     """A validated concept. Constructing one is the only way a concept
@@ -177,13 +182,13 @@ def load_concepts(path: Path) -> list[Concept]:
     return concepts
 
 
-# Real-model stack (imported lazily -- see module docstring)
+
 def _load_real_stack():
     """Import the heavyweight real-model stack with an actionable failure."""
     try:
-        from sae_lens import SAE  # type: ignore
-        from transformer_lens import HookedTransformer  # type: ignore
-    except ImportError as e:  # pragma: no cover - environment-dependent
+        from sae_lens import SAE  
+        from transformer_lens import HookedTransformer  
+    except ImportError as e: 
         raise SystemExit(
             "Real-model audit requires the optional stack:\n"
             "  pip install -r scripts/requirements-real.txt\n"
@@ -212,7 +217,7 @@ def _validate_readout_tokens(model, concepts: list[Concept]) -> list[list[int]]:
     return resolved
 
 
-# Probe: batched, cached, resumable
+
 class TextConceptProbe(FeatureProbe):
     """FeatureProbe over positive/negative text datasets. Batches prompts
     and, with cache_dir, persists activations to disk for resumption."""
@@ -247,7 +252,7 @@ class TextConceptProbe(FeatureProbe):
         try:
             from tqdm import tqdm
             iterator = tqdm(range(0, len(prompts), self._batch_size), desc=desc, leave=False)
-        except ImportError:  # pragma: no cover - tqdm is in requirements-real.txt
+        except ImportError:  
             iterator = range(0, len(prompts), self._batch_size)
 
         outs = []
@@ -258,7 +263,7 @@ class TextConceptProbe(FeatureProbe):
                 _, cache = self._model.run_with_cache(
                     tokens, names_filter=self._hook, return_type=None
                 )
-                outs.append(cache[self._hook][:, -1, :])  # final token position, whole batch
+                outs.append(cache[self._hook][:, -1, :])  
         return torch.cat(outs, dim=0).to(self._device)
 
     def _get(self, feature_idx: int, positive: bool, n: int) -> torch.Tensor:
@@ -315,7 +320,7 @@ def probe_directions(probe: TextConceptProbe, n_concepts: int, n: int = 64) -> t
     return torch.stack(dirs)
 
 
-# Downstream readout
+
 def _parse_hook_layer(hook_name: str) -> int:
     """Parse the layer index out of a TransformerLens hook name, failing
     with a clear message instead of a bare IndexError/ValueError on an
@@ -338,9 +343,9 @@ def build_downstream(model, hook_name: str, readout_token_ids: list[list[int]]):
     def downstream(h_hat: torch.Tensor) -> torch.Tensor:
         with torch.no_grad():
             logits = model(
-                h_hat.unsqueeze(1),  # (batch, seq=1, d_model)
+                h_hat.unsqueeze(1),  
                 start_at_layer=layer,
-            )[:, -1, :]  # (batch, d_vocab)
+            )[:, -1, :] 
         cols = [logits[:, ids].mean(dim=1, keepdim=True) for ids in readout_token_ids]
         return torch.cat(cols, dim=1)
 
@@ -429,7 +434,7 @@ def main(argv: list[str] | None = None) -> int:
     except Exception as e:
         raise SystemExit(f"failed to load model {args.model!r}: {e}") from e
     try:
-        sae = SAE.from_pretrained(args.sae_release, args.sae_id, device=args.device)[0]
+        sae = SAE.from_pretrained(args.sae_release, args.sae_id, device=args.device)
     except Exception as e:
         raise SystemExit(
             f"failed to load SAE {args.sae_release!r}/{args.sae_id!r}: {e}\n"
